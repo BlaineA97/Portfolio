@@ -1,9 +1,9 @@
 # Blaine Anderson
 ## Software/Web/App Developer
 
-#### Creating a ReactJS App:
+### Creating a ReactJS App:
 
-##### Step 1: create-react-app
+#### Step 1: create-react-app
   * In your terminal use `create-react-app example-app-name`.
   * Enter the directory `cd example-app-name`.
   * Make sure you initialize the repository:
@@ -21,7 +21,7 @@
     git push origin master
     ~~~
 
-##### Step 2: Adding React-Routes
+#### Step 2: Adding React-Routes
   * Open both "Index.js" & "App.js".
   * Now we are altering the text to include our routing options:
   * We will alter "Index.js", replace line 4 with:
