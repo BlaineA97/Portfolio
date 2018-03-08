@@ -86,6 +86,12 @@
     }
 
     export default Routing;
-
     ~~~
     * As it implies, if we were to visit "http://localhost:3000/YouSeeWhatIMean" we would load *"ComponentC"*.
+
+  * Lastly, while you likely won't need it right away, your are able to implement links to other components.
+  * It will go to the URL associated with the link as well as load the component.
+  ~~~
+  <Link to="/"><p>Home Page</p></Link>
+  ~~~
+  * This example would bring you to the root directory, which in our example above would be *"App.js"*.
