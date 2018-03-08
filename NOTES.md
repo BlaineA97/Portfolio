@@ -37,3 +37,55 @@
   ~~~
   ReactDOM.render(<Routing />, document.getElementById('root'));
   ~~~
+
+  * Now we will created **`Routing.js`** in the **`src`** folder and add this to it:
+  ~~~
+  import React, { Component } from 'react';
+  import { BrowserRouter, Route } from 'react-router-dom'
+  import App from './App';
+
+  class Routing extends Component {
+    render() {
+      return (
+        <BrowserRouter>
+            <div>
+              <Route exact path="/" component={App} />
+          </div>
+        </BrowserRouter>
+      );
+    }
+  }
+
+  export default Routing;
+  ~~~
+  * The important bits here are `<BrowserRouter>` & `<Route exact path="/" component={App} />`.
+    * We tell React that we are using Routes by encompassing our Routing section in `<BrowserRouter>`
+    * We tell React the exact url and component we want to use using: `<Route exact path="/" component={App} />`.
+    * Provided we have components called *"ComponentA"*, *"ComponentB"*, & *"ComponentC"* we can connect those using the following example:
+    ~~~
+    import React, { Component } from 'react';
+    import { BrowserRouter, Route } from 'react-router-dom'
+    import App from './App';
+    import ComponentA from './ComponentA';
+    import ComponentB from './ComponentB';
+    import ComponentC from './ComponentC';
+
+    class Routing extends Component {
+      render() {
+        return (
+          <BrowserRouter>
+              <div>
+                <Route exact path="/" component={App} />
+                <Route exact path="/PageOne" component={ComponentA} />
+                <Route exact path="/AnyPathTwo" component={ComponentB} />
+                <Route exact path="/YouSeeWhatIMean" component={ComponentC} />
+            </div>
+          </BrowserRouter>
+        );
+      }
+    }
+
+    export default Routing;
+
+    ~~~
+    * As it implies, if we were to visit "http://localhost:3000/YouSeeWhatIMean" we would load *"ComponentC"*.
