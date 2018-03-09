@@ -210,3 +210,44 @@
 
 #### Step 4: Setting Up Responsive Design Using react-responsive
 * [react-responsive](https://github.com/contra/react-responsive)
+* We will be using a combination of react-responsive & CSS @media queries in order to make the site responsive.
+* Every site is a little different, so the breakpoints won't usually match up every time.
+* However, this is a good mobile-first baseline to follow when your starting out:
+~~~
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+  body {
+    background-color: red;
+  }
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+  body {
+    background-color: blue;
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+  body {
+    background-color: green;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+  body {
+    background-color: yellow;
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+  body {
+    background-color: purple;
+  }
+}
+~~~
