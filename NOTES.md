@@ -94,6 +94,10 @@
   * Lastly, while you likely won't need it right away, your are able to implement links to other components.
   * It will go to the URL associated with the link as well as load the component.
   ~~~
+  import { Link } from 'react-router-dom';
+  
+  . . .
+
   <Link to="/"><p>Home Page</p></Link>
   ~~~
   * This example would bring you to the root directory, which in our example above would be *"App.js"*.
@@ -211,6 +215,10 @@
 #### Step 4: Setting Up Responsive Design Using react-responsive
 * [react-responsive](https://github.com/contra/react-responsive)
 * We will be using a combination of react-responsive & CSS @media queries in order to make the site responsive.
+* To use react-responsive you must import it into any page you use it on:
+~~~
+import MediaQuery from 'react-responsive';
+~~~
 * Every site is a little different, so the breakpoints won't usually match up every time.
 * However, this is a good mobile-first baseline to follow when your starting out:
 ~~~
