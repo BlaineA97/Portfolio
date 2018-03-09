@@ -163,6 +163,36 @@
   }
 }
 
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+#Snip-button-05 {
+  border-color: royalblue;
+  color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 40px 40px royalblue inset, 0 0 0 0 royalblue;
+  transition: all 150ms ease-in-out;
+}
+#Snip-button-05:hover {
+  box-shadow: 0 0 10px 0 royalblue inset, 0 0 10px 4px royalblue;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+#Snip-button-000 {
+}
+#Snip-button-000:hover {
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+#Snip-button-000 {
+}
+#Snip-button-000:hover {
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+#Snip-button-000 {
+}
+#Snip-button-000:hover {
+}
 
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 #Snip-testing-container {

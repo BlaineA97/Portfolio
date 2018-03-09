@@ -26,6 +26,9 @@ class Snippets extends Component {
               <div id="Snip-button-04-border"></div>
               <p id="Snip-button-04-text">Hover Here!</p>
             </Link>
+            <Link to="" id="Snip-button-05" className="Snip-button">
+              Hover Here!
+            </Link>
 
           </div>
 
