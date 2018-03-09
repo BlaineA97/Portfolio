@@ -13,7 +13,8 @@ class Navigation extends Component {
         </div>
 
         <div id="Navigation-title-container">
-          <h1 id="Navigation-title">Blaine Anderson</h1>
+          <h1 id="Navigation-title-1">Blaine Anderson</h1>
+          <h4 id="Navigation-title-2">Software / Web / App Developer</h4>
         </div>
 
         <div id="Navigation-menu-container">
