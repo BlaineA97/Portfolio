@@ -22,7 +22,7 @@
   ~~~
 
 #### Step 2: Adding React-Routes
-  * [react-router Github](https://github.com/ReactTraining/react-router)
+  * [react-router github](https://github.com/ReactTraining/react-router)
   * We will be using `react-router-dom` for reference.
   * We will now be adding React Routes to our App to create a seamless SPA (Single Page App).
   * I use *yarn* instead of *npm*, so all examples will be in *yarn* only:
@@ -98,4 +98,10 @@
   ~~~
   * This example would bring you to the root directory, which in our example above would be *"App.js"*.
 
-#### Step 3: ?
+#### Step 3: File Structure (Opinionated)
+  * As a warning, there is no "perfect" way to set up your file structure & the following step is entirely my opinion on the matter.
+  * There are some conventions, but it comes down to how you enjoy sorting files as well as future developer readability.
+
+
+
+#### Step 4: Setting Up Responsive Design
