@@ -251,3 +251,65 @@
   }
 }
 ~~~
+* I, personally, want it to transition smoothly when changing queries, and all you have to do is add this little snippet to your .css sheets:
+~~~
+body {
+    transition:all .2s linear;
+    -o-transition:all .2s linear;
+    -moz-transition:all .2s linear;
+    -webkit-transition:all .2s linear;
+}
+~~~
+* For reference's sake, here is the full .css sheet to copy and paste:
+~~~
+/* Color Palette provided in App.css */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+    transition:all .2s linear;
+    -o-transition:all .2s linear;
+    -moz-transition:all .2s linear;
+    -webkit-transition:all .2s linear;
+}
+
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+  body {
+    background-color: red;
+  }
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+  body {
+    background-color: blue;
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+  body {
+    background-color: green;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+  body {
+    background-color: yellow;
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+  body {
+    background-color: purple;
+  }
+}
+~~~

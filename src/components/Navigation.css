@@ -5,6 +5,13 @@
   padding: 0;
 }
 
+body {
+    transition:all .2s linear;
+    -o-transition:all .2s linear;
+    -moz-transition:all .2s linear;
+    -webkit-transition:all .2s linear;
+}
+
 /*==========  Mobile First Method  ==========*/
 
 /* Custom, iPhone Retina */
