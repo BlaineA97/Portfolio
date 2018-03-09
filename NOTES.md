@@ -253,7 +253,7 @@
 ~~~
 * I, personally, want it to transition smoothly when changing queries, and all you have to do is add this little snippet to your .css sheets:
 ~~~
-body {
+* {
     transition:all .2s linear;
     -o-transition:all .2s linear;
     -moz-transition:all .2s linear;
@@ -267,13 +267,10 @@ body {
 * {
   margin: 0;
   padding: 0;
-}
-
-body {
-    transition:all .2s linear;
-    -o-transition:all .2s linear;
-    -moz-transition:all .2s linear;
-    -webkit-transition:all .2s linear;
+  transition:all .2s linear;
+  -o-transition:all .2s linear;
+  -moz-transition:all .2s linear;
+  -webkit-transition:all .2s linear;
 }
 
 /*==========  Mobile First Method  ==========*/

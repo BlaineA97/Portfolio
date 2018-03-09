@@ -3,21 +3,47 @@
 * {
   margin: 0;
   padding: 0;
-}
-
-body {
-    transition:all .2s linear;
-    -o-transition:all .2s linear;
-    -moz-transition:all .2s linear;
-    -webkit-transition:all .2s linear;
+  transition:all .2s linear;
+  -o-transition:all .2s linear;
+  -moz-transition:all .2s linear;
+  -webkit-transition:all .2s linear;
 }
 
 /*==========  Mobile First Method  ==========*/
+
+#Navigation-wrapper {
+  background: rgb(200, 54, 54); /* Fallback for older browsers */
+  background: rgba(200, 54, 54, 0.5);
+  width: 100%;
+  height: 65px;
+  position: absolute;
+  z-index: 1;
+  font-family: 'Merriweather', serif;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  flex-wrap: nowrap;
+  text-align: center;
+}
+#Navigation-logo {
+}
+#Navigation-title {
+}
+#Navigation-menu {
+}
+.Navigation-container {
+  margin: 0 10%;
+}
 
 /* Custom, iPhone Retina */
 @media only screen and (min-width : 320px) {
   body {
     background-color: red;
+  }
+  .Navigation-container {
+    margin: 0 1%;
   }
 }
 
@@ -26,12 +52,18 @@ body {
   body {
     background-color: blue;
   }
+  .Navigation-container {
+    margin: 0 5%;
+  }
 }
 
 /* Small Devices, Tablets */
 @media only screen and (min-width : 768px) {
   body {
     background-color: green;
+  }
+  .Navigation-container {
+    margin: 0 10%;
   }
 }
 
