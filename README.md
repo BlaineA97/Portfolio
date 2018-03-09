@@ -1,5 +1,5 @@
-#Blaine Anderson
-##Software/Web/App Developer
+# Blaine Anderson
+## Software/Web/App Developer
 
 #### Technologies used:
   * [ReactJS](https://reactjs.org/)

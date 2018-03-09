@@ -99,8 +99,35 @@
   * This example would bring you to the root directory, which in our example above would be *"App.js"*.
 
 #### Step 3: File Structure (Opinionated)
-  * As a warning, there is no "perfect" way to set up your file structure & the following step is entirely my opinion on the matter.
-  * There are some conventions, but it comes down to how you enjoy sorting files as well as future developer readability.
+  > As a warning, there is no "perfect" way to set up your file structure & the following step is entirely my opinion on the matter.
+  There are some conventions, but it comes down to how you enjoy sorting files as well as future developer readability.
+
+  * Now that we have used `create-react-app` & added our `react-routes-dom` updates to the code, we should have a file structure like this:
+  ~~~
+  example-app-name
+    => .git
+    => node_modules
+    => public
+    => src
+    => .gitignore
+    => package.json
+    => README.md
+    => yarn.lock
+  ~~~
+  
+  * We are almost exclusivly interested in the `src` folder.
+  * After expanding that we should see:
+  ~~~
+  src
+    => App.css
+    => App.js
+    => App.test.js
+    => Index.css
+    => Index.js
+    => logo.svg
+    => registerServiceWorker.js
+    => Routing.js
+  ~~~
 
 
 
