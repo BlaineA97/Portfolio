@@ -9,7 +9,9 @@ class Navigation extends Component {
       <div id="Navigation-wrapper">
 
         <div id="Navigation-logo-container">
-          <img src={logo} id="Nav-logo" alt="logo" />
+          <Link to="/">
+            <img src={logo} id="Nav-logo" alt="logo" />
+          </Link>
         </div>
 
         <div id="Navigation-title-container">
@@ -26,6 +28,9 @@ class Navigation extends Component {
           </Link>
           <Link to="/skills" className="Navigation-menu-link">
             <p>Skills</p>
+          </Link>
+          <Link to="/snippets" className="Navigation-menu-link">
+            <p>Snippets</p>
           </Link>
         </div>
 
