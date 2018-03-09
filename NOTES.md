@@ -1,9 +1,9 @@
-# Blaine Anderson
-## Software/Web/App Developer
+# Developer Notes & Examples:
 
 ### Creating a ReactJS App:
 
 #### Step 1: create-react-app
+  * [create-react-app github](https://github.com/facebook/create-react-app)
   * In your terminal use `create-react-app example-app-name`.
   * Enter the directory `cd example-app-name`.
   * Make sure you initialize the repository:
@@ -22,6 +22,8 @@
   ~~~
 
 #### Step 2: Adding React-Routes
+  * [react-router Github](https://github.com/ReactTraining/react-router)
+  * We will be using `react-router-dom` for reference.
   * We will now be adding React Routes to our App to create a seamless SPA (Single Page App).
   * I use *yarn* instead of *npm*, so all examples will be in *yarn* only:
   ~~~
@@ -48,8 +50,8 @@
     render() {
       return (
         <BrowserRouter>
-            <div>
-              <Route exact path="/" component={App} />
+          <div>
+            <Route exact path="/" component={App} />
           </div>
         </BrowserRouter>
       );
@@ -74,11 +76,11 @@
       render() {
         return (
           <BrowserRouter>
-              <div>
-                <Route exact path="/" component={App} />
-                <Route exact path="/PageOne" component={ComponentA} />
-                <Route exact path="/AnyPathTwo" component={ComponentB} />
-                <Route exact path="/YouSeeWhatIMean" component={ComponentC} />
+            <div>
+              <Route exact path="/" component={App} />
+              <Route exact path="/PageOne" component={ComponentA} />
+              <Route exact path="/AnyPathTwo" component={ComponentB} />
+              <Route exact path="/YouSeeWhatIMean" component={ComponentC} />
             </div>
           </BrowserRouter>
         );
@@ -95,3 +97,5 @@
   <Link to="/"><p>Home Page</p></Link>
   ~~~
   * This example would bring you to the root directory, which in our example above would be *"App.js"*.
+
+#### Step 3: ?
