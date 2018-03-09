@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   text-align: center;
 }
@@ -25,4 +30,16 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+/* Color Palette provided to all other .css */
+:root {
+  --Gunmetal: #2B2D42;
+  --GrayBlue: #8D99AE;
+  --AntiFlashWhite: #EDF2F4;
+  --Khaki: #CCAD8F;
+  --Lust: #E2161A;
+  --Footer: #383838;
+  --Highlightes: #428bca;
+  --Backdrops: #7bb1e0;
 }

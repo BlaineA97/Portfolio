@@ -114,19 +114,62 @@
     => README.md
     => yarn.lock
   ~~~
-  
-  * We are almost exclusivly interested in the `src` folder.
+
+  * We are almost exclusively interested in the `src` folder.
   * After expanding that we should see:
   ~~~
-  src
-    => App.css
-    => App.js
-    => App.test.js
-    => Index.css
-    => Index.js
-    => logo.svg
-    => registerServiceWorker.js
-    => Routing.js
+  example-app-name
+    => src
+      => App.css
+      => App.js
+      => App.test.js
+      => Index.css
+      => Index.js
+      => logo.svg
+      => registerServiceWorker.js
+      => Routing.js
+  ~~~
+
+  * I like to create a `components` folder to hold everything I'll be working on inside of the `src` folder.
+  * Inside the `components` folder, I like to have a top level set of components such as: *`Navigation.js`*, *`Header.js`*, *`Body.js`*, & *`Footer.js`*
+  ~~~
+  example-app-name
+    => src
+      => components
+        => Navigation.js
+        => Navigation.css
+        => Header.js
+        => Header.css
+        => Body.js
+        => Body.css
+        => Footer.js
+        => Footer.css
+      => App.css
+      => App.js
+      => App.test.js
+      => Index.css
+      => Index.js
+      => logo.svg
+      => registerServiceWorker.js
+      => Routing.js
+  ~~~
+
+  * Using this template for structuring your components and CSS files will go a long way towards maintaining organization in larger codebases.
+  * Bonus: For each new component I create, I use the same template when I begin:
+  ~~~
+  import React, { Component } from 'react';
+  import './NewComponent.css';
+
+  class NewComponent extends Component {
+    render() {
+      return (
+        <div className="NewComponent-container">
+        </div>
+      );
+    }
+  }
+
+  export default NewComponent;
   ~~~
 
 
