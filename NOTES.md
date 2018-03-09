@@ -155,6 +155,7 @@
   ~~~
 
   * Using this template for structuring your components and CSS files will go a long way towards maintaining organization in larger codebases.
+
 ###### Bonus Individual File Setup:
   * For each new component I create, I use the same templates when I begin.
   * Prior to designing a website, I choose a set of colors and add them as CSS variables for easy access from any `.css` file:
@@ -207,6 +208,5 @@
   export default NewComponent;
   ~~~
 
-
-
-#### Step 4: Setting Up Responsive Design
+#### Step 4: Setting Up Responsive Design Using react-responsive
+* [react-responsive](https://github.com/contra/react-responsive)
