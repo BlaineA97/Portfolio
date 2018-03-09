@@ -4,33 +4,57 @@
   margin: 0;
   padding: 0;
 }
-#Snippets-wrapper {
-  background: rgb(0, 0, 0); /* Fallback for older browsers */
-  background: rgba(0, 0, 0, 0.4);
+#Snippets {
   width: 100%;
-  height: 100px;
-  position: absolute;
-  z-index: 1;
   font-family: 'Merriweather', serif;
+}
+#Snippets-Navigation {
+  width: 100%;
+  margin-bottom: 20px;
+}
+#Snippets-wrapper {
   display: flex;
   justify-content: space-around;
   align-items: center;
   vertical-align: middle;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   text-align: center;
+}
+.Snippet-container {
+  padding: 25px 45px;
+  margin: 15px;
+}
+.Snip-button {
+  color: black;
+  text-decoration: none;
+}
+
+/* Design Type Containers */
+#Snip-buttons-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  vertical-align: middle;
+  flex-wrap: wrap;
+  text-align: center;
+  border: 3px blue solid;
 }
 
 /* Individual Designs */
-.Snip-button {
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+#Snip-button-01 {
+  margin: 2%;
   text-decoration: none;
   color: inherit;
   border: black 1px solid;
   border-radius: 25px 0;
+  padding: 5px 15px;
   background: linear-gradient(270deg, lightgray, gray);
   background-size: 150% 150%;
   box-shadow: 3px 3px black;
 }
-.Snip-button:hover {
+#Snip-button-01:hover {
   border: gray 1px solid;
   animation: button-manipulation 2s ease infinite;
 }
@@ -49,3 +73,132 @@
     background-position:0% 50%
   }
 }
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+#Snip-button-02 {
+  height: 100%;
+  padding: 15px 15px;
+  border-top: 1px black dashed;
+  border-bottom: 1px black dashed;
+  border-right: 1px black solid;
+  border-left: 1px black solid;
+}
+#Snip-button-02:hover {
+  animation: button-enlargement 3s ease infinite;
+}
+
+@keyframes button-enlargement {
+  0% {
+    border-top: 1px black dashed;
+    border-bottom: 1px black dashed;
+  }
+  50% {
+    font-size: 150%;
+    border-top: 5px black dashed;
+    border-bottom: 5px black dashed;
+    border-left: 3px black solid;
+    border-right: 3px black solid;
+  }
+  100% {
+    border-top: 1px black dashed;
+    border-bottom: 1px black dashed;
+  }
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+#Snip-button-03 {
+  padding: 10px 25px;
+  border: red 3px dashed;
+  border-radius: 15px;
+  transition: box-shadow 800ms ease-in-out, color 800ms ease-in-out;
+}
+#Snip-button-03:hover {
+  box-shadow: 0 0 40px 40px red inset;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+#Snip-button-04 {
+  position:relative;
+  width:100px;
+  height:100px;
+}
+#Snip-button-04-text {
+  position:absolute;
+  left: 10%;
+  top: 43%;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+#Snip-button-04-border {
+  width: 100px;
+  height: 100px;
+  background: transparent;
+  border-radius: 50%;
+  border: 3px dashed rgb(2, 26, 129);
+}
+
+#Snip-button-04-border:hover {
+  animation: button-rotate-dashed 5s ease infinite;
+}
+
+@keyframes button-rotate-dashed {
+  0% {
+    background-color: transparent;
+    transform: rotate(0deg);
+  }
+  10% {
+    background-color: transparent;
+  }
+  50% {
+    color: white;
+    background: rgba(66, 92, 204, 0.4);
+  }
+  90% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: transparent;
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+#Snip-testing-container {
+  width: 33%;
+  border: 3px red solid;
+  padding: 20px 0;
+}
+#Snip-testing-button {
+  padding: 15px 15px;
+  border-top: 1px black dashed;
+  border-bottom: 1px black dashed;
+  border-right: 1px black solid;
+  border-left: 1px black solid;
+}
+#Snip-testing-button:hover {
+  animation: button-squiggle 3s ease infinite;
+}
+
+@keyframes button-squiggle {
+  0% {
+    width: inherit;
+    border-top: 1px black dashed;
+    border-bottom: 1px black dashed;
+  }
+  50% {
+    width: 50%;
+    font-size: 200%;
+    border-top: 5px black dashed;
+    border-bottom: 5px black dashed;
+    border-left: 3px black solid;
+    border-right: 3px black solid;
+  }
+  100% {
+    width: inherit;
+    border-top: 1px black dashed;
+    border-bottom: 1px black dashed;
+  }
+}
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */

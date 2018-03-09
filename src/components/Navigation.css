@@ -30,7 +30,6 @@
   vertical-align: middle;
   flex-wrap: nowrap;
   text-align: center;
-  margin-bottom: 20px;
 }
 
 /* Flexbox Containers (Divs) */
@@ -69,7 +68,16 @@
 }
 .Navigation-menu-link:hover {
   border: gray 1px solid;
-  animation: button-manipulation 2s ease infinite;
+  animation: button-squiggle 2s ease infinite;
+}
+
+@keyframes button-squiggle {
+  0% {
+
+  }
+  100% {
+
+  }
 }
 
 @keyframes button-manipulation {
