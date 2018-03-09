@@ -7,7 +7,7 @@ class Navigation extends Component {
     return (
       <div id="Navigation-wrapper">
         <div id="Navigation-logo" className="Navigation-container">
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src={logo} id="Nav-logo" alt="logo" />
         </div>
         <div id="Navigation-title" className="Navigation-container">
           <h1>Blaine Anderson</h1>
