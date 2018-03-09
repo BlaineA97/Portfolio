@@ -155,7 +155,42 @@
   ~~~
 
   * Using this template for structuring your components and CSS files will go a long way towards maintaining organization in larger codebases.
-  * Bonus: For each new component I create, I use the same template when I begin:
+###### Bonus Individual File Setup:
+  * For each new component I create, I use the same templates when I begin.
+  * Prior to designing a website, I choose a set of colors and add them as CSS variables for easy access from any `.css` file:
+  ~~~
+  /* Color Palette provided to all other .css */
+  :root {
+    --TheNameOfTheVariable: #2C7D42;
+    --Gunmetal: #2B2D42;
+    --GrayBlue: #8D99AE;
+    --AntiFlashWhite: #EDF2F4;
+    --Khaki: #CCAD8F;
+    --Lust: #E2161A;
+    --Footer: #383838;
+    --Highlightes: #428bca;
+    --Backdrops: #7bb1e0;
+  }
+  ~~~
+  * using `:root` as the element just allows us to call it from any `.css` file.
+  * In order to call that variable to another file you use the normal call for an element, but instead of using a color or hex code, you call `var(--TheNameOfTheVariable)`:
+  ~~~
+  background-color: var(--Gunmetal)
+  color: var(--AntiFlashWhite)
+  border-color: var(--Lust)
+  ~~~
+
+  * For all other `.css`:
+  ~~~
+  /* Color Palette provided in App.css */
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  ~~~
+
+  * For `.js`:
   ~~~
   import React, { Component } from 'react';
   import './NewComponent.css';
