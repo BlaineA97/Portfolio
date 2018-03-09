@@ -27,60 +27,92 @@
   font-family: 'Merriweather', serif;
 
   display: flex;
+  justify-content: space-around;
+  align-items: center;
+  vertical-align: middle;
+  flex-wrap: nowrap;
+  text-align: center;
+}
+
+/* Flexbox Containers (Divs) */
+#Navigation-logo-container {
+}
+#Navigation-title-container {
+}
+#Navigation-menu-container {
+  display: flex;
   justify-content: center;
   align-items: center;
   vertical-align: middle;
   flex-wrap: nowrap;
   text-align: center;
 }
-#Navigation-logo {
-}
+
+/* Specific Elements*/
 #Nav-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
+  margin-left: 10px;
 }
 #Navigation-title {
 }
-#Navigation-menu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  vertical-align: middle;
-  flex-wrap: wrap;
-  text-align: center;
+.Navigation-menu-link {
+  margin-right: 10px;
 }
 
+/* @MEDIA QUERIES */
 /* Custom, iPhone Retina */
 @media only screen and (min-width : 320px) {
-  .Navigation-container {
-    margin: 0 1%;
+  #Navigation-menu-container {
+    flex-wrap: wrap;
+  }
+  .Navigation-menu-link {
+    font-size: 1em;
+  }
+  #Navigation-title {
+    font-size: 1.6em;
   }
 }
 
 /* Extra Small Devices, Phones */
 @media only screen and (min-width : 480px) {
-  .Navigation-container {
-    margin: 0 5%;
+  #Navigation-menu-container {
+    flex-wrap: nowrap;
+  }
+  .Navigation-menu-link {
+    font-size: 1.2em;
+  }
+  #Navigation-title {
+    font-size: 2em;
   }
 }
 
 /* Small Devices, Tablets */
 @media only screen and (min-width : 768px) {
-  .Navigation-container {
-    margin: 0 10%;
+  .Navigation-menu-link {
+    font-size: 1.4em;
+  }
+  #Navigation-title {
+    font-size: 2.4em;
   }
 }
 
 /* Medium Devices, Desktops */
 @media only screen and (min-width : 992px) {
-  .Navigation-container {
-    margin: 0 12%;
+  .Navigation-menu-link {
+    font-size: 1.6em;
+  }
+  #Navigation-title {
+    font-size: 2.8em;
   }
 }
 
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {
-  .Navigation-container {
-    margin: 0 15%;
+  .Navigation-menu-link {
+    font-size: 1.8em;
+  }
+  #Navigation-title {
+    font-size: 3em;
   }
 }

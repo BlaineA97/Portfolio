@@ -6,16 +6,16 @@ class Navigation extends Component {
   render() {
     return (
       <div id="Navigation-wrapper">
-        <div id="Navigation-logo" className="Navigation-container">
+        <div id="Navigation-logo-container">
           <img src={logo} id="Nav-logo" alt="logo" />
         </div>
-        <div id="Navigation-title" className="Navigation-container">
-          <h1>Blaine Anderson</h1>
+        <div id="Navigation-title-container">
+          <h1 id="Navigation-title">Blaine Anderson</h1>
         </div>
-        <div id="Navigation-menu" className="Navigation-container">
-          <h1>Projects</h1>
-          <h1>Hobbies</h1>
-          <h1>Skills</h1>
+        <div id="Navigation-menu-container">
+          <h1 className="Navigation-menu-link">Projects</h1>
+          <h1 className="Navigation-menu-link">Hobbies</h1>
+          <h1 className="Navigation-menu-link">Skills</h1>
         </div>
       </div>
     );
