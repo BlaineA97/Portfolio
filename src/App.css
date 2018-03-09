@@ -43,3 +43,39 @@
   --Highlightes: #428bca;
   --Backdrops: #7bb1e0;
 }
+
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+  body {
+    background-color: red;
+  }
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+  body {
+    background-color: blue;
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+  body {
+    background-color: green;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+  body {
+    background-color: yellow;
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+  body {
+    background-color: purple;
+  }
+}

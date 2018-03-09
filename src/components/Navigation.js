@@ -10,13 +10,12 @@ class Navigation extends Component {
           <img src={logo} className="App-logo" alt="logo" />
         </div>
         <div id="Navigation-title" className="Navigation-container">
-          <h1>Item 2</h1>
+          <h1>Blaine Anderson</h1>
         </div>
         <div id="Navigation-menu" className="Navigation-container">
-          <h1>Div Item 1</h1>
-          <h1>Div Item 2</h1>
-          <h1>Div Item 3</h1>
-          <h1>Div Item 4</h1>
+          <h1>Projects</h1>
+          <h1>Hobbies</h1>
+          <h1>Skills</h1>
         </div>
       </div>
     );

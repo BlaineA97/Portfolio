@@ -9,13 +9,19 @@
   -webkit-transition:all .2s linear;
 }
 
+/*
+  A Wrapper contains ALL subsequent containers and is only used once.
+  A Container holds each section.
+  A Section holds one part of a flexbox within a containr
+*/
+
 /*==========  Mobile First Method  ==========*/
 
 #Navigation-wrapper {
   background: rgb(200, 54, 54); /* Fallback for older browsers */
   background: rgba(200, 54, 54, 0.5);
   width: 100%;
-  height: 65px;
+  height: 100px;
   position: absolute;
   z-index: 1;
   font-family: 'Merriweather', serif;
@@ -32,16 +38,16 @@
 #Navigation-title {
 }
 #Navigation-menu {
-}
-.Navigation-container {
-  margin: 0 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  flex-wrap: wrap;
+  text-align: center;
 }
 
 /* Custom, iPhone Retina */
 @media only screen and (min-width : 320px) {
-  body {
-    background-color: red;
-  }
   .Navigation-container {
     margin: 0 1%;
   }
@@ -49,9 +55,6 @@
 
 /* Extra Small Devices, Phones */
 @media only screen and (min-width : 480px) {
-  body {
-    background-color: blue;
-  }
   .Navigation-container {
     margin: 0 5%;
   }
@@ -59,9 +62,6 @@
 
 /* Small Devices, Tablets */
 @media only screen and (min-width : 768px) {
-  body {
-    background-color: green;
-  }
   .Navigation-container {
     margin: 0 10%;
   }
@@ -69,14 +69,14 @@
 
 /* Medium Devices, Desktops */
 @media only screen and (min-width : 992px) {
-  body {
-    background-color: yellow;
+  .Navigation-container {
+    margin: 0 12%;
   }
 }
 
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {
-  body {
-    background-color: purple;
+  .Navigation-container {
+    margin: 0 15%;
   }
 }
