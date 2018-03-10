@@ -15,6 +15,10 @@
   --Backdrops: #7bb1e0;
 }
 
+#App-wrapper {
+  min-height: 100vh; /* Allows the footer to exist in the proper place */
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

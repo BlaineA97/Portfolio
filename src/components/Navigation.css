@@ -68,31 +68,6 @@
 }
 .Navigation-menu-link:hover {
   border: gray 1px solid;
-  animation: button-squiggle 2s ease infinite;
-}
-
-@keyframes button-squiggle {
-  0% {
-
-  }
-  100% {
-
-  }
-}
-
-@keyframes button-manipulation {
-  0% {
-    border-radius: 25px 0 25px 0;
-    background-position:0% 50%
-  }
-  50% {
-    border-radius: 0 25px 0 25px;
-    background-position:100% 50%
-  }
-  100% {
-    border-radius: 25px 0 25px 0;
-    background-position:0% 50%
-  }
 }
 
 /* @MEDIA QUERIES */

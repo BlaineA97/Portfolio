@@ -4,3 +4,6 @@
   margin: 0;
   padding: 0;
 }
+#ProjectBody-wrapper {
+  min-height: 100vh; /* Allows the footer to exist in the proper place */
+}

@@ -7,12 +7,15 @@
 #Snippets {
   width: 100%;
   font-family: 'Merriweather', serif;
+  background-color: tan;
+  z-index: -100;
 }
 #Snippets-Navigation {
   width: 100%;
   margin-bottom: 20px;
 }
 #Snippets-wrapper {
+  min-height: 100vh; /* Allows the footer to exist in the proper place */
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -128,7 +131,6 @@
   top: 43%;
   right: 0;
   bottom: 0;
-  z-index: -1;
 }
 #Snip-button-04-border {
   width: 100px;
@@ -147,15 +149,9 @@
     background-color: transparent;
     transform: rotate(0deg);
   }
-  10% {
-    background-color: transparent;
-  }
   50% {
     color: white;
     background: rgba(66, 92, 204, 0.4);
-  }
-  90% {
-    background-color: transparent;
   }
   100% {
     background-color: transparent;

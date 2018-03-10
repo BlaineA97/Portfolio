@@ -95,7 +95,7 @@
   * It will go to the URL associated with the link as well as load the component.
   ~~~
   import { Link } from 'react-router-dom';
-  
+
   . . .
 
   <Link to="/"><p>Home Page</p></Link>
@@ -193,17 +193,29 @@
     margin: 0;
     padding: 0;
   }
+  #NewComponent-wrapper {
+    min-height: 100vh; /* Allows the footer to exist in the proper place */
+  }
   ~~~
 
   * For `.js`:
   ~~~
   import React, { Component } from 'react';
+  import logo from './logo.svg';
   import './NewComponent.css';
+  import Navigation from './components/Navigation';
+  import Footer from './components/Footer';
 
   class NewComponent extends Component {
     render() {
       return (
-        <div className="NewComponent-container">
+        <div id="NewComponent">
+          <div id="NewComponent-Navigation"><Navigation /></div>
+
+        <div id="NewComponent-wrapper"> {/* Flexboxed Body while maintaining the Navigation and Footer */}
+          </div>
+
+          <div id="NewComponent-Footer"><Footer /></div>
         </div>
       );
     }

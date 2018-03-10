@@ -4,3 +4,37 @@
   margin: 0;
   padding: 0;
 }
+
+#Footer-wrapper {
+  width: 100%;
+  position: relative;
+  bottom: 0;
+}
+#Footer-container {
+  width: 100%;
+  height: 50px;
+  background-color: var(--Footer);
+  border-bottom: 3px solid rgb(0, 0, 0); /* No opacity border for older browsers */
+  border-bottom: 3px solid rgba(0, 0, 0, .5); /* Modern browser with .3 opacity */
+  color: white;
+  font-family: 'Merriweather', serif;
+}
+#Footer-center {
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-around;
+  vertical-align: middle;
+  text-align: center;
+  flex-wrap: nowrap;
+}
+.Footer-text-link {
+  transition: transform .2s;
+  text-decoration: underline;
+}
+.Footer-text-link:hover {
+  transform: scale(1.2);
+  color: lightblue;
+}
+.PackageLookup-footer {
+
+}
