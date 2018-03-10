@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import TVImg from './images/tv-1.png';
+import MacImg from './images/mac-1.png';
 import './App.css';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
@@ -11,6 +12,11 @@ class App extends Component {
         <div id="App-Navigation"><Navigation /></div>
 
         <div id="App-wrapper"> {/* Flexboxed Body while maintaining the Navigation and Footer */}
+
+          <div id="App-screen-container">
+            <img src={MacImg} id="App-screen-img" alt="Laptop" />
+          </div>
+
         </div>
 
         <div id="App-Footer"><Footer /></div>

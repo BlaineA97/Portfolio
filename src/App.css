@@ -17,17 +17,22 @@
 
 #App-wrapper {
   min-height: 100vh; /* Allows the footer to exist in the proper place */
+  margin-top: 30px;
 }
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+#App-screen-container {
+ display: flex;
+ justify-content: center;
+ flex-wrap: nowrap;
 }
 
 /* Custom, iPhone Retina */
 @media only screen and (min-width : 320px) {
   body {
     background-color: red;
+  }
+  #App-screen-img {
+    width: 200px;
+    height: 100px;
   }
 }
 
@@ -36,12 +41,20 @@
   body {
     background-color: blue;
   }
+  #App-screen-img {
+    width: 400px;
+    height: 200px;
+  }
 }
 
 /* Small Devices, Tablets */
 @media only screen and (min-width : 768px) {
   body {
     background-color: green;
+  }
+  #App-screen-img {
+    width: 600px;
+    height: 300px;
   }
 }
 
@@ -50,11 +63,19 @@
   body {
     background-color: yellow;
   }
+  #App-screen-img {
+    width: 800px;
+    height: 400px;
+  }
 }
 
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px) {
   body {
     background-color: purple;
+  }
+  #App-screen-img {
+    width: 1000px;
+    height: 500px;
   }
 }

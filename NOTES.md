@@ -212,7 +212,7 @@
         <div id="NewComponent">
           <div id="NewComponent-Navigation"><Navigation /></div>
 
-        <div id="NewComponent-wrapper"> {/* Flexboxed Body while maintaining the Navigation and Footer */}
+          <div id="NewComponent-wrapper"> {/* Flexboxed Body while maintaining the Navigation and Footer */}
           </div>
 
           <div id="NewComponent-Footer"><Footer /></div>
