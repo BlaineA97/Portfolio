@@ -57,18 +57,23 @@
   padding: 0 2px;
   border-radius: 25px 0;
 }
+
 .Navigation-menu-link {
+  color: black;
   text-decoration: none;
-  color: inherit;
-  border: black 1px solid;
-  border-radius: 25px 0;
-  background: linear-gradient(270deg, lightgray, gray);
-  background-size: 150% 150%;
-  box-shadow: 3px 3px black;
+  border-color: royalblue;
+  color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 40px 40px royalblue inset, 0 0 0 0 royalblue;
+  transition: all 150ms ease-in-out;
 }
 .Navigation-menu-link:hover {
-  border: gray 1px solid;
+  box-shadow: 0 0 10px 0 royalblue inset, 0 0 10px 4px royalblue;
 }
+
+
+
 
 /* @MEDIA QUERIES */
 /* Custom, iPhone Retina */
