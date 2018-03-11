@@ -24,6 +24,7 @@
   * If you are planning on hosting a demo on Heroku, you can do so using:
   ~~~
   heroku create
+  git push heroku master
   ~~~
 
 #### Step 2: Adding React-Routes
