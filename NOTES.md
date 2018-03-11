@@ -21,6 +21,11 @@
   git push origin master
   ~~~
 
+  * If you are planning on hosting a demo on Heroku, you can do so using:
+  ~~~
+  heroku create
+  ~~~
+
 #### Step 2: Adding React-Routes
   * [react-router github](https://github.com/ReactTraining/react-router)
   * We will be using `react-router-dom` for reference.
