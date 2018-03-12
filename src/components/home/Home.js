@@ -11,23 +11,30 @@ import ProgramFour from '../../videos/ProgramFour.mp4'
 
 
 class Home extends Component {
+  constructor(props) {
+  super(props);
+  this.state = {
+    videoToPlay: ProgramOne
+  };
+}
+
   render() {
-    let Video = ProgramOne;
+    let programVideo = ProgramOne
 
-    let videoChanger = () => {
+    setInterval(function() {
       console.log("timer!");
-      if (Video === ProgramOne) {
-        Video = ProgramTwo;
-      } else if (Video === ProgramTwo) {
-        Video = ProgramThree;
-      } else if (Video === ProgramThree) {
-        Video = ProgramFour;
-      } else {
-        Video = ProgramOne;
+      console.log(programVideo);
+      if (programVideo === ProgramOne) {
+        programVideo = ProgramTwo;
+        // } else if (this.state.videoToPlay === ProgramTwo) {
+        //   this.state.videoToPlay = ProgramThree;
+        // } else if (this.state.videoToPlay === ProgramThree) {
+        //   this.state.videoToPlay = ProgramFour;
+        // } else {
+        //   this.state.videoToPlay = ProgramOne;
       }
-    }
+    }, 5000);
 
-    window.setInterval(videoChanger, 1000);
 
     return (
       <div id="Home">
@@ -41,7 +48,7 @@ class Home extends Component {
           </div>
           <div id="Home-screen-interior">
             <video autoPlay="autoplay" muted loop id="Home-screen-interior-video">
-              <source id="Home-screen-video-source" src={Video} type="video/mp4" />
+              <source id="Home-screen-video-source" src={programVideo} type="video/mp4" />
             </video>
             <h1 id="Home-screen-title-backdrop">-</h1>
             <h1 id="Home-screen-title-1">Blaine Anderson</h1>
