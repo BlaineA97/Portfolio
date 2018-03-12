@@ -11,30 +11,31 @@ import ProgramFour from '../../videos/ProgramFour.mp4'
 
 
 class Home extends Component {
-  constructor(props) {
-  super(props);
-  this.state = {
-    videoToPlay: ProgramOne
-  };
-}
-
   render() {
     let programVideo = ProgramOne
 
-    setInterval(function() {
-      console.log("timer!");
-      console.log(programVideo);
-      if (programVideo === ProgramOne) {
-        programVideo = ProgramTwo;
-        // } else if (this.state.videoToPlay === ProgramTwo) {
-        //   this.state.videoToPlay = ProgramThree;
-        // } else if (this.state.videoToPlay === ProgramThree) {
-        //   this.state.videoToPlay = ProgramFour;
-        // } else {
-        //   this.state.videoToPlay = ProgramOne;
-      }
-    }, 5000);
+    // setInterval(function() {}, 5000);
 
+      const videoDisplay = (programVideo) => {
+        switch (programVideo) {
+          case ProgramOne:
+            return(<source id="Home-screen-video-source" src={programVideo} type="video/mp4" />)
+            programVideo = ProgramTwo;
+            break;
+          case ProgramTwo:
+            return(<source id="Home-screen-video-source" src={programVideo} type="video/mp4" />)
+            programVideo = ProgramThree;
+            break;
+          case ProgramThree:
+            return(<source id="Home-screen-video-source" src={programVideo} type="video/mp4" />)
+            programVideo = ProgramFour;
+            break;
+          default:
+            return(<source id="Home-screen-video-source" src={programVideo} type="video/mp4" />)
+            programVideo = ProgramTwo;
+            break;
+        }
+      }
 
     return (
       <div id="Home">
@@ -48,7 +49,10 @@ class Home extends Component {
           </div>
           <div id="Home-screen-interior">
             <video autoPlay="autoplay" muted loop id="Home-screen-interior-video">
-              <source id="Home-screen-video-source" src={programVideo} type="video/mp4" />
+              {/* { setInterval(function() {videoDisplay(programVideo)}, 5000) } */}
+              {/* {videoDisplay(programVideo)} */}
+<source id="Home-screen-video-source" src={programVideo} type="video/mp4" />
+
             </video>
             <h1 id="Home-screen-title-backdrop">-</h1>
             <h1 id="Home-screen-title-1">Blaine Anderson</h1>
