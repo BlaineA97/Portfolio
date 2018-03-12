@@ -9,6 +9,7 @@
   min-height: 100vh; /* Allows the footer to exist in the proper place */
   margin-top: 30px;
 }
+
 #Home-screen-container {
  display: flex;
  justify-content: center;
@@ -33,6 +34,18 @@
   height: 100%;
   width: 100%;
   z-index: -5;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+#Home-screen-interior-video {
+  background-color: black;
+  border-radius: 20px;
+  border: none;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
   position: absolute;
   left: 0;
   right: 0;
@@ -152,5 +165,9 @@
   #Home-screen-title-2 {
     top: 220px;
     font-size: 2.6em;
+  }
+  #myVideo {
+    width: 50%;
+    height: auto;
   }
 }
