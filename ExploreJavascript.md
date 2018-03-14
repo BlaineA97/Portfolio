@@ -1,7 +1,12 @@
 # Javascript Examples:
 
-### Function Types:
-  > Functions in JavaScript are generally declared as either a function declaration or a function expression.
+### Functions:
+  * Functions in JavaScript are generally declared as either a function declaration or a function expression.
+    * Functions are written to perform a task.
+    * Functions take data, perform a set of tasks on the data, and then return the result.
+    * We can define parameters to be used when calling the function.
+    * When calling a function, we can pass in arguments, which will set the function's parameters.
+    * We can use return to return the result of a function which allows us to call functions anywhere, even inside other functions.
 
 #### Function Declarations
   > A function declaration is a function that is bound to an identifier or name.
@@ -67,32 +72,36 @@
     * The parentheses around celsius have been removed, since it is a single parameter.
     * The return keyword has been removed since the function consists of a single-line block.
     * The {} have been removed, again, since the function consists of a single-line block.
-    ~~~
-    const multiplyByNineFifths = (celsius) => {
-      return celsius * (9/5);
-    };
-    ~~~
-    * Is the same as:
-    ~~~
-    const multiplyByNineFifths = celsius => celsius * (9/5);
-    ~~~
-    
-  ~~~
+      * Example One:
+      ~~~
+      const multiplyByNineFifths = (celsius) => {
+        return celsius * (9/5);
+      };
 
+      // Is the same as:
 
-  const getFahrenheit = (celsius) => {
-    return multiplyByNineFifths(celsius) + 32;
-  };
+      const multiplyByNineFifths = celsius => celsius * (9/5);
+      ~~~
+      * Example Two:
+      ~~~
+      const getFahrenheit = (celsius) => {
+        return multiplyByNineFifths(celsius) + 32;
+      };
 
-  console.log('The temperature is ' + getFahrenheit(15) + '°F');
+      // Is the same as:
 
-  // Is the same as:
+      const getFahrenheit = celsius => multiplyByNineFifths(celsius) + 32;
+      ~~~
+      * Example Three:
+      ~~~
+      const volumeOfSphere = (diameter) => {
+        return (1/6) * Math.PI * diameter * diameter * diameter;
+      };
 
+      // Is the same as:
 
-  const getFahrenheit = celsius => multiplyByNineFifths(celsius) + 32;
-
-  console.log('The temperature is ' + getFahrenheit(15) + '°F');
-  ~~~
+      const volumeOfSphere = diameter => (1/6) * Math.PI * diameter * diameter * diameter;
+      ~~~
 
 #### Blank
   >
