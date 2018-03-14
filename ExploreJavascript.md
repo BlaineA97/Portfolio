@@ -1,6 +1,6 @@
 # Javascript Examples:
 
-### Functions:
+## Functions:
   * Functions in JavaScript are generally declared as either a function declaration or a function expression.
     * Functions are written to perform a task.
     * Functions take data, perform a set of tasks on the data, and then return the result.
@@ -102,7 +102,7 @@
 
       const volumeOfSphere = diameter => (1/6) * Math.PI * diameter * diameter * diameter;
       ~~~
-### Scope
+## Scope
   * Scope refers to where a variable can be accessed in a program. While some variables can be accessed from anywhere within a program, other variables may only be available in a specific context. Scope depends entirely on where a variable is declared.
   * Scope is the idea in programming that some variables are accessible/inaccessible from other parts of the program.
   * Global Scope refers to variables that are accessible to every part of the program.
@@ -235,6 +235,60 @@
     console.log(i)
     // Output: Error (Because the variable is not available outside of the Block Scope.)
     ~~~
+
+## Arrays
+  * Arrays are JavaScript's way of making lists. These lists can store any data types (including strings, numbers, and booleans) and they are ordered, meaning each item has a numbered position.
+    Example One:
+    ~~~
+    let newYearsResolutions = ['a', 'b', 'c']
+    console.log(newYearsResolutions)
+    // Output: [ 'a', 'b', 'c' ]
+    ~~~
+
+#### Arrays: Property Access
+  * Each item in an array has a numbered position. We can access individual items using their numbers, just like we would in an ordinary list.
+  * Something important to note is that JavaScript starts counting from 0 rather than 1, so the first item in an array will be at position 0. This is because JavaScript is zero-indexed.
+
+    * Example One: (Selecting an Item in an Array)
+    ~~~
+    let newYearsResolutions = ['Rappel into a cave', 'Take a falconry class', 'Learn to juggle'];
+
+    console.log(newYearsResolutions[0]);
+    // Output: 'Rappel into a cave'
+
+    console.log(newYearsResolutions[2]);
+    // Output: 'Learn to juggle'
+    ~~~
+    * Example Two: (Selecting a letter in a String)
+    ~~~
+    let hello = 'Hello World';
+
+    console.log(hello[6]);
+    // Output: W
+
+    console.log(hello[1]);
+    // Output: e
+    ~~~
+    * Example Three: (Selecting an Item by making it a variable)
+    ~~~
+    let newYearsResolutions = ['a', 'b', 'c']
+    let listItem = newYearsResolutions[0]
+
+    console.log(listItem)
+    // Output: 'a'
+    ~~~
+
+#### Blank
+  >
+
+  ~~~
+  ~~~
+
+#### Blank
+  >
+
+  ~~~
+  ~~~
 
 #### Blank
   >
