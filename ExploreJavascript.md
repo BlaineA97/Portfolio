@@ -63,7 +63,7 @@
 
   > A function composed of a sole single-line block does not need brackets.
 
-  Concise Body Examples:
+  * Concise Body Examples:
     * The parentheses around celsius have been removed, since it is a single parameter.
     * The return keyword has been removed since the function consists of a single-line block.
     * The {} have been removed, again, since the function consists of a single-line block.
@@ -76,6 +76,7 @@
     ~~~
     const multiplyByNineFifths = celsius => celsius * (9/5);
     ~~~
+    
   ~~~
 
 
