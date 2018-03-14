@@ -278,26 +278,101 @@
     // Output: 'a'
     ~~~
 
+#### Arrays: Update Elements
+  * `seasons[3] = "Autumn";` tells our program to change the item at index 3 of the seasons array to be "Autumn" instead of what is already there.
+  ~~~
+  let seasons = ["Winter", "Spring", "Summer", "Fall"];
+
+  console.log(seasons)
+  //Output: [ 'Winter', 'Spring', 'Summer', 'Fall' ]
+
+  seasons[3] = "Autumn";
+  console.log(seasons)
+  //Output: [ 'Winter', 'Spring', 'Summer', 'Autumn' ]
+  ~~~
+
+#### Arrays: Length Property
+  * We may wish to know how many items are stored inside of an array.
+  * We can find this out by using one of an array's built-in properties, called length.
+  * We can attach this to any variable holding an array and it will return the number of items inside.
+    * Example One: (Length will return the number of Items in the Array)
+    ~~~
+    let newYearsResolutions = ['Rappel into a cave', 'Take a falconry class'];
+
+    console.log(newYearsResolutions.length);
+    // Output: 2
+    ~~~
+    * Example Two: (Length will return the number of Items in the Array)
+    ~~~
+    let newYearsResolutions = ['a', 'b', 'c']
+
+    console.log(newYearsResolutions.length)
+    // Output: 3
+    ~~~
+
+#### Arrays: Built in Methods
+  * JavaScript has built in methods for arrays that help us do common tasks. Let's learn some of them.
+  * Learn more about each method at [Mozilla Developer Network (MDN)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+
+##### `push()`
+  * `.push()` allows us to add items to the end of an array.
+    * Example:
+    ~~~
+    let groceryList = ['orange juice', 'bananas', 'coffee beans', 'brown rice', 'pasta', 'coconut oil', 'plantains'];
+    groceryList.push('honey');
+    console.log(groceryList);
+      // Output: ['orange juice', 'bananas', 'coffee beans', 'brown rice', 'pasta', 'coconut oil', 'plantains', 'honey'];
+    ~~~
+
+##### `pop()`
+  * `.pop()` removes the last item of an array.
+    * Example:
+    ~~~
+    let groceryList = ['orange juice', 'bananas', 'coffee beans', 'brown rice', 'pasta', 'coconut oil', 'plantains'];
+    groceryList.pop();
+    console.log(groceryList);
+      // Output: ['orange juice', 'bananas', 'coffee beans', 'brown rice', 'pasta', 'coconut oil'];
+    ~~~
+
+##### `.shift()`
+  * `.shift()` removes the first item from an Array.
+    * Example:
+    ~~~
+    let groceryList = ['orange juice', 'bananas', 'coffee beans', 'brown rice', 'pasta', 'coconut oil', 'plantains'];
+    groceryList.shift();
+    console.log(groceryList);
+      // Output: ['bananas', 'coffee beans', 'brown rice', 'pasta', 'coconut oil', 'plantains'];
+    ~~~
+
+##### `.unshift()`
+  * `.unshift()` adds the item to the front of an Array.
+    * Example:
+    ~~~
+    let groceryList = ['orange juice', 'bananas', 'coffee beans', 'brown rice', 'pasta', 'coconut oil', 'plantains'];
+    groceryList.unshift('popcorn')
+    console.log(groceryList);
+      // Output: ['popcorn', 'orange juice', 'bananas', 'coffee beans', 'brown rice', 'pasta', 'coconut oil', 'plantains' ]
+    ~~~
+
+##### `.slice()`
+  * `.slice(startingIndex, [optionalEndingIndex])` allows you to make a new Array using part of an existing array.
+  * The original Array will not be modified.
+    * Example:
+    ~~~
+    let groceryList = ['orange juice', 'bananas', 'coffee beans', 'brown rice', 'pasta', 'coconut oil', 'plantains'];
+    console.log(groceryList.slice(1, 4));
+      // Output: ['orange juice', 'bananas', 'coffee beans']
+    ~~~
+    * `.slice(1,4)` extracts the second element through the fourth element (elements indexed 1, 2, and 3).
+
+#### Arrays: with let and const
+  *
+    * Example:
+    ~~~
+    ~~~
+
 #### Blank
-  >
-
-  ~~~
-  ~~~
-
-#### Blank
-  >
-
-  ~~~
-  ~~~
-
-#### Blank
-  >
-
-  ~~~
-  ~~~
-
-#### Blank
-  >
-
-  ~~~
-  ~~~
+  *
+    * Example:
+    ~~~
+    ~~~
