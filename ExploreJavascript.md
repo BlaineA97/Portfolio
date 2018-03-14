@@ -103,7 +103,10 @@
       const volumeOfSphere = diameter => (1/6) * Math.PI * diameter * diameter * diameter;
       ~~~
 ### Scope
-  > Scope refers to where a variable can be accessed in a program. While some variables can be accessed from anywhere within a program, other variables may only be available in a specific context. Scope depends entirely on where a variable is declared.
+  * Scope refers to where a variable can be accessed in a program. While some variables can be accessed from anywhere within a program, other variables may only be available in a specific context. Scope depends entirely on where a variable is declared.
+  * Scope is the idea in programming that some variables are accessible/inaccessible from other parts of the program.
+  * Global Scope refers to variables that are accessible to every part of the program.
+  * Block Scope refers to variables that are accessible only within the block they are defined.
 
 #### Global Scope
   > Variables defined in the global scope are declared outside of a set of curly braces {}, referred to as a block, and are thus available throughout a program.
