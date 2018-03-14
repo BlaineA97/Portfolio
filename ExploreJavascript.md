@@ -102,6 +102,111 @@
 
       const volumeOfSphere = diameter => (1/6) * Math.PI * diameter * diameter * diameter;
       ~~~
+### Scope
+  > Scope refers to where a variable can be accessed in a program. While some variables can be accessed from anywhere within a program, other variables may only be available in a specific context. Scope depends entirely on where a variable is declared.
+
+#### Global Scope
+  > Variables defined in the global scope are declared outside of a set of curly braces {}, referred to as a block, and are thus available throughout a program.
+
+  * Example One:
+    * Here the variable color is declared outside of the function block, giving it global scope.
+    * In turn, color can be accessed within the colorOfSky function.
+    * Global variables make data accessible from any place within a program.
+  ~~~
+  const color = 'blue'
+
+  const colorOfSky = () => {
+    return color; // blue
+  };
+
+  console.log(colorOfSky()); // blue
+  ~~~
+  * Example Two:
+  ~~~
+  const satellite = 'The Moon';
+  const galaxy = 'The Milky Way';
+
+  let stars = 'North Star'
+
+  const myNightSky = () => {
+    return 'Night Sky: ' + satellite + ', ' + stars + ', ' + galaxy;
+  }
+
+  console.log(myNightSky())
+  // Output: "Night Sky: The Moon, North Star, The Milky Way"
+  ~~~
+
+  > While it's important to know what global scope is, it's better to avoid defining variables in the global scope. Globally scoped variables can collide with variables that are more locally scoped, causing unexpected behavior in our code.
+
+  > By adding a variable to our function we change the code in unexpected ways:
+
+  ~~~
+  const satellite = 'The Moon';
+  const galaxy = 'The Milky Way';
+  let stars = 'North Star'
+
+  const myNightSky = () => {
+    stars = 'Sirius';
+    return 'Night Sky: ' + satellite + ',' + stars + ',' + galaxy;
+  }
+
+  console.log(myNightSky())
+  // Output: "Night Sky: The Moon, Sirius, The Milky Way"
+
+  console.log(stars)
+  //Output: "Sirius"
+  ~~~
+
+#### Block Scope
+  * Because of the challenges with global scope, it is preferable to define variables in block scope.
+  * A block refers to the {} braces of a function, a loop, or an if statement, and serves as an important structural marker for our code.
+  * Block scope means that a variable defined in the block is only accessible within the curly braces.
+
+  * Example One:
+  ~~~
+  const colorOfSky = () => {
+    let color = 'blue';
+    console.log(color); // blue
+  };
+
+  colorOfSky(); // blue
+  console.log(color); // undefined
+  ~~~
+  * Example Two:
+  ~~~
+  const visibleLightWaves = () => {
+    let lightWaves = 'Moonlight';
+    console.log(lightWaves)
+  }
+
+  visibleLightWaves()
+  // Output: "Moonlight"
+
+  console.log(lightWaves)
+  // Output: Error (Because the variable is not available outside of the Block Scope.)
+  ~~~
+  * Example Three: (Using if statements)
+  ~~~
+  const visibleLightWaves = () => {
+    let lightWaves = 'Moonlight';
+    let region = 'The Arctic';
+    if (region === 'The Arctic') {
+  	  let lightWaves = 'Northern Lights';
+  	  console.log(lightWaves)
+      // Output: 'Northern Lights'
+    }
+    console.log(lightWaves)
+    // Output: 'Moonlight'
+  }
+
+  visibleLightWaves()
+  ~~~
+
+#### Blank
+  >
+
+  ~~~
+  ~~~
 
 #### Blank
   >
