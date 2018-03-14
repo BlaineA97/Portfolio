@@ -185,7 +185,7 @@
   console.log(lightWaves)
   // Output: Error (Because the variable is not available outside of the Block Scope.)
   ~~~
-  * Example Three: (Using if statements)
+  * Example Three: (Using If Statements)
   ~~~
   const visibleLightWaves = () => {
     let lightWaves = 'Moonlight';
@@ -201,6 +201,37 @@
 
   visibleLightWaves()
   ~~~
+  * Example Four: (Using For Loops)
+    * Here the variable i is defined in the cloudCount() function.
+    * Within the for loop block, we again define i, as a value that will be incremented.
+    * The local value of i, whether defined in the function block or the for loop, has no impact on the global scope of our program.
+    ~~~
+    const cloudCount = () => {
+      let i = 2;
+      console.log(i); // 2
+      for (let i = 0; i < 10; i++) {
+        console.log(i); // All numbers from 0 to 9
+      }
+    };
+
+    cloudCount();
+    console.log(i); // undefined
+    ~~~
+    * Example Five: (Using For Loops)
+    ~~~
+    const starCount = () => {
+      let i = 5;
+      console.log(i) // Output: 5
+      for (let i = 0 ; i < 12 ; i++) {
+    	  console.log(i) // Output: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+      }
+    }
+
+    starCount()
+    // Output: 5 & 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+    console.log(i)
+    // Output: Error (Because the variable is not available outside of the Block Scope.)
+    ~~~
 
 #### Blank
   >
