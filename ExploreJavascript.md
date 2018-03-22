@@ -393,7 +393,110 @@
   * Arrays have many other methods that perform different functions, such as .slice() and .shift(). You can read the documentation for any * array method on the Mozilla Developer Network website.
   * Variables that contain arrays can be declared with let or const. Even when declared with const, arrays are still mutable; they can be * changed. However, a variable declared with const cannot be reassigned.
 
-## Blank
+## Loops
+  * Loops let us tell the computer to loop over a block of code so that we don't have to write out the same process over and over.
+  * Loops are especially useful when we have an array where we'd like to do something to each of its items, like logging each item to the console.
+  * There are two kinds of loops:
+    * for loops, which let us loop a block of code a known amount of times.
+    * while loops, which let us loop a block of code an unknown amount of times.
+
+#### Loops: for Loops, Forwards
+  * Instead of writing out the same code over and over, let’s make the computer loop through our array for us. We can do this with for loops.
+    * Example:
+    ~~~
+    let animals = ["Grizzly Bear", "Sloth", "Sea Lion"];
+
+    for (let animalIndex = 0; animalIndex < animals.length; animalIndex++) {
+      console.log(animals[animalIndex]);
+    }
+
+    // Output:
+    // Grizzly Bear
+    // Sloth
+    // Sea Lion
+    ~~~
+    * Breakdown:
+    ~~~
+    for ( [START CONDITION] ; [END CONDITION] ; [ITERATOR] ) {
+      CODE BLOCK
+    }
+    ~~~
+      * Within the for loop's parentheses, the **start condition** is let animalIndex = 0, which means the loop will start counting at 0. animalIndex is called an iterator variable and it is a good practice to give this variable a descriptive name.
+      * The **stop condition** is animalIndex < animals.length, which means the loop will run as long as animalIndex is less than the length of the animals array. When animalIndex is equal to the length of the animals array, the loop will stop executing.
+      * The **iterator** is animalIndex++. This means that after each loop, animalIndex will increase by 1.
+      * Finally, the **code block** is inside of the { and } curly braces. The block will execute each loop until the program reaches the stop condition.
+      * The secret to loops is that animalIndex, the variable we created inside the for loop's parentheses, is equal to a number. To be more clear, the first loop, animalIndex will equal 0, the second loop, animalIndex will equal 1, and the third loop, animalIndex will equal 2.
+      * Loops make it possible to write animals[0], animals[1], animals[2] programmatically instead of by hand. We can write a for loop and replace the hard-coded number with the variable animalIndex, like this: animals[animalIndex].
+    * Example Two:
+    ~~~
+    const vacationSpots = ['Seattle', 'Ireland', 'Britain']
+
+    for (let vacationSpotIndex = 0 ; vacationSpotIndex < vacationSpots.length ; vacationSpotIndex++ ) {
+      console.log('I would love to visit ' + vacationSpots[vacationSpotIndex])
+    }
+
+    // Output:
+    // I would love to visit Seattle
+    // I would love to visit Ireland
+    // I would love to visit Britain
+    ~~~
+
+#### Loops; for Loops, Backwards
+  * We can make our loop run backward by modifying the start, stop, and iterator conditions.
+      * Example:
+      ~~~
+      const vacationSpots = ['Seattle', 'Ireland', 'Britain']
+
+      for (let vacationSpotIndex = (vacationSpots.length - 1) ; vacationSpotIndex >= 0 ; vacationSpotIndex-- ) {
+        console.log('I would love to visit ' + vacationSpots[vacationSpotIndex])
+      }
+      // Output:
+      // I would love to visit Britain
+      // I would love to visit Ireland
+      // I would love to visit Seattle
+      ~~~
+      * To do this, we'll need to edit the code between the for loop's parentheses:
+      * The start condition should set vacationSpotIndex to the length of the array.
+      * The loop should stop running when vacationSpotIndex is less than 0.
+      * The iterator should subtract 1 each time, which is the purpose of vacationSpotIndex--.
+
+#### Loops: Nested for Loops
+  * Let's say that you and a friend would like to go on vacation together. You've both made arrays of your favorite places and you want to compare to see if any of them match. This is a job for loops!
+    * The big idea is that we can run a for loop inside another for loop to compare the items in two arrays.
+    * Every time the outer for loop runs once, the inner for loop will run completely.
+    * These are called nested for loops and we can use them to check to see if any of your vacation spots match your friend's spots.
+      * Example:
+      ~~~
+      let myPlaces = ['New Zealand', 'San Francisco', 'Canada'];
+      let friendPlaces = ['Canada', 'England', 'Scottland']
+
+      for ( let myPlacesIndex = 0 ; myPlacesIndex < myPlaces.length ; myPlacesIndex++ ) {
+        for (let friendPlacesIndex = 0 ; friendPlacesIndex < friendPlaces.length ; friendPlacesIndex++) {
+          if (myPlaces[myPlacesIndex] === friendPlaces[friendPlacesIndex]) {
+            console.log(myPlaces[myPlacesIndex])
+          }
+        }
+      }
+       // Output: Canada
+      ~~~
+
+#### Blank
+  *
+    * Example:
+    ~~~
+    ~~~
+
+#### Blank
+  *
+    * Example:
+    ~~~
+    ~~~
+
+#### Blank
+  *
+    * Example:
+    ~~~
+    ~~~
 
 #### Blank
   *
