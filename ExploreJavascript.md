@@ -499,10 +499,12 @@
     ~~~
 
 ## Iterators
-  *
+  * [MDN Iterators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+  * Iterators are built-in Javascript functions that allow the developer to easily manipulate their code.
+  * While parameters do not require specific naming, it is best practice to name them to be easily identified by other developers.
 
 #### forEach()
-  * `forEach()` will execute the same code on each element of an array.
+  * .forEach() is used to execute the same code on every element in an array but does not change the array and returns undefined.
   * Things to keep in mind about the forEach() function:
     * It is an array method. It must be called upon an array.
     * Any changes to the iterated array value won't be updated in the original array.
@@ -537,11 +539,94 @@
     fruits.forEach(fruitName => console.log("I want to eat a " + fruitName));
     ~~~
 
-#### Blank
-  *
+#### .map()
+  * .map() executes the same code on every element in an array and returns a new array with the updated elements.
     * Example:
     ~~~
+    let animals = ['Hen', 'elephant', 'llama', 'leopard', 'ostrich', 'Whale', 'octopus', 'rabbit', 'lion', 'dog'];
+
+    let secretMessage = animals.map(animal => animal.charAt(0));
+
+    console.log(secretMessage.join(''));
+    // Output: HelloWorld
     ~~~
+    * Example:
+    ~~~
+    let bigNumbers = [100, 200, 300, 400, 500];
+
+    let smallNumbers = bigNumbers.map(num => num/100);
+    // Output: [1, 2, 3, 4, 5]
+    ~~~
+
+#### .filter()
+  * `.filter()` checks every element in an array to see if it meets certain criteria and returns a new array with the elements that return truthy for the criteria.
+  * Example One (ES5 Style):
+  ~~~
+  let words = ['chair', 'music', 'pillow', 'brick', 'pen', 'door'];
+
+  let shortWords = words.filter(function(word) {
+    return word.length < 6;
+  });
+  // Output: ['pillow']
+  ~~~
+  * Example Two (ES5 Style):
+  ~~~
+  let randomNumbers = [375, 200, 3.14, 7, 13, 852];
+
+  let smallNumbers = randomNumbers.filter(function(smallNumber) {
+    return smallNumber < 250;
+  })
+  console.log(smallNumbers)
+  // Output: [200, 3.14, 7, 13]
+  ~~~
+  * Example One (ES6 Style):
+  ~~~
+  let words = ['chair', 'music', 'pillow', 'brick', 'pen', 'door'];
+
+  let shortWords = words.filter(word => word.length < 6);
+  // Output: ['pillow']
+  ~~~
+  * Example Two (ES6 Style):
+  ~~~
+  let favoriteWords = ['nostalgia', 'hyperbole', 'fervent', 'esoteric', 'serene'];
+
+  let longFavoriteWords = favoriteWords.filter(word => word.length > 7);
+  // Output: [ 'nostalgia', 'hyperbole', 'esoteric' ]
+  ~~~
+
+#### .some()
+  * `.some()` iterates over an array and returns `true` if any item inside returns truthy.
+  * Example:
+  ~~~
+  let words = ['unique', 'uncanny', 'pique', 'oxymoron', 'guise'];
+
+  console.log(words.some(function(word) {
+    return word.length < 6;
+  }));
+  // Output: true
+  ~~~
+
+#### .every()
+  * The `.every()` method tests whether all elements in the array pass the test implemented by the provided function.
+  * Example:
+  ~~~
+  let interestingWords = ['unique', 'uncanny', 'oxymoron'];
+
+  console.log(interestingWords.every(word => word.length > 5 ));
+  // Output: true
+  ~~~
+
+#### Blank
+  *
+  * Example:
+  ~~~
+  ~~~
+
+#### Blank
+  *
+  * Example:
+  ~~~
+  ~~~
 
 ## Blank
   *
