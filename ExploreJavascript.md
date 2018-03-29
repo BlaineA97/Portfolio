@@ -480,10 +480,61 @@
        // Output: Canada
       ~~~
 
-#### Blank
-  *
+#### Loops: Beware Infinite Loops
+  * A common infinite loop occurs when the condition of the while statement is set to true. Below is an example of code that will run forever.
     * Example:
     ~~~
+    // Initiate an infinite loop
+      while (true) {
+          // execute code forever
+      }
+    ~~~
+  * The loop begins with i = 0.
+  * After one iteration through the loop, i is equal to -1. This is because i begins at 0 and 1 is subtracted from i each loop.
+    * Example:
+    ~~~
+    for (let i = 0; i < array.length; i--) {
+       //some code
+    }
+    ~~~
+
+## Iterators
+  *
+
+#### forEach()
+  * `forEach()` will execute the same code on each element of an array.
+  * Things to keep in mind about the forEach() function:
+    * It is an array method. It must be called upon an array.
+    * Any changes to the iterated array value won't be updated in the original array.
+    * The return value is undefined.
+  * Both of the below examples achieve the same result:
+    * Example One (ES5 Style):
+    ~~~
+    let groceries = ['whole wheat flour', 'brown sugar', 'salt', 'cranberries', 'walnuts'];
+
+    groceries.forEach(function(groceryItem) {
+      console.log(' - ' + groceryItem);
+    });
+    ~~~
+    * Example Two (ES5 Style):
+    ~~~
+    let fruits = ['mango', 'papaya', 'pineapple', 'apple'];
+
+    fruits.forEach(function(fruitName) {
+      console.log("I want to eat a " + fruitName)
+    });
+    ~~~
+    * Example One (ES6 Style):
+    ~~~
+    let groceries = ['whole wheat flour', 'brown sugar', 'salt', 'cranberries', 'walnuts'];
+
+    groceries.forEach(groceryItem => console.log(' - ' + groceryItem));
+    ~~~
+    * Example Two (ES6 Style):
+    ~~~
+    let fruits = ['mango', 'papaya', 'pineapple', 'apple'];
+
+    fruits.forEach(fruitName => console.log("I want to eat a " + fruitName));
     ~~~
 
 #### Blank
@@ -492,11 +543,8 @@
     ~~~
     ~~~
 
-#### Blank
+## Blank
   *
-    * Example:
-    ~~~
-    ~~~
 
 #### Blank
   *
