@@ -884,45 +884,51 @@
     ~~~
 
 #### Objects: Getters and Setters Together
-  * This is simply an example using both Getters and Setters in the same block of code:
-    * Example:
-    ~~~
-    let person = {
-      _name: 'Blaine',
-      _age: 28,
+  * Getter & Setter recap:
+    * Objects store key-value pairs and let us represent real-world things in JavaScript.
+    * Properties in objects are separated by commas. Key-value pairs are always separated by a colon.
+    * You can add or edit a property within an object with dot notation.
+    * A method is a function in an object.
+    * `this` helps us with scope inside of object methods.
+    * `this` is a dynamic variable that can change depending on the object that is calling the method.
+    * Getter and setter methods allow you to process data before accessing or setting property values.
+  * Example:
+  ~~~
+  let person = {
+    _name: 'Blaine',
+    _age: 28,
 
-      set age(ageIn) {
-        if (typeof ageIn === 'number') {
-          this._age = ageIn;
-          console.log(`${ageIn} is valid input.`);
-        }
-        else {
-          console.log('Invalid input');
-          return 'Invalid input';
-        }
-      },
-
-    	get age() {
-        console.log(`${this._name} is ${this._age} years old.`)
-        return this._age;
+    set age(ageIn) {
+      if (typeof ageIn === 'number') {
+        this._age = ageIn;
+        console.log(`${ageIn} is valid input.`);
       }
+      else {
+        console.log('Invalid input');
+        return 'Invalid input';
+      }
+    },
 
-    };
+  	get age() {
+      console.log(`${this._name} is ${this._age} years old.`)
+      return this._age;
+    }
 
-    // Using an integer is correct. It sets the _age value to 65 using the setter method.
-    person.age = 39;
-    // Output: 39 is valid input.
+  };
 
-    // Using anything other than an integer is incorrect which will activate the else portion.
-    person.age = 'Thirty-nine';
-    // Output: Invalid input
+  // Using an integer is correct. It sets the _age value to 65 using the setter method.
+  person.age = 39;
+  // Output: 39 is valid input.
 
-    // Gets the _age value
-    console.log(person.age)
-    // Output: Blaine is 39 years old.
-    // Output: 39
+  // Using anything other than an integer is incorrect which will activate the else portion.
+  person.age = 'Thirty-nine';
+  // Output: Invalid input
 
-    ~~~
+  // Gets the _age value
+  console.log(person.age)
+  // Output: Blaine is 39 years old.
+  // Output: 39
+  ~~~
 
 ## Blank
   *
