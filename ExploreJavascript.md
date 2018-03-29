@@ -741,22 +741,187 @@
 
 #### Objects: Methods
   * When objects have key-function pairs, we call the function a method.
-    * Example:
+    * Example (ES5 Style):
     ~~~
     let person = {
       name: 'Blaine',
       age: 28,
       weekendAlarm: 'No alarms needed',
       weekAlarm: 'Alarm set to 7AM',
-      // 'sayHello' is now the key to this function.
+
+      // 'sayHello' is now the key to this function using ES5
       sayHello: () => {
         return 'Hello, there!';
     	}
+
     };
 
     // When you call the method, don't forget the ()!
     console.log(person.sayHello())
     // Output: Hello, there!
+    ~~~
+
+    * Example (ES6 Style / Best Practice):
+    ~~~
+    let person = {
+      name: 'Blaine',
+      age: 28,
+      weekendAlarm: 'No alarms needed',
+      weekAlarm: 'Alarm set to 7AM',
+
+      // 'sayHello' is now the key to this function using ES6
+      sayHello() {
+        return 'Hello, there!';
+    	}
+
+    };
+
+    // When you call the method, don't forget the ()!
+    console.log(person.sayHello())
+    // Output: Hello, there!
+    ~~~
+
+#### Objects: The this Keyword
+  * In Javascript, this refers to the object we call it inside.
+    * Example:
+      * Using `this.name` tells the code to look at the object its part of (myObj) and find a corresponding key (name).
+      * Be aware, using ES5 syntax to create a key-function will break the code. You MUST use ES6.
+    ~~~
+    let myObj = {
+      name: 'Blaine',
+      sayHello() {
+        return `${this.name} says hello!`;
+      }
+    };
+    console.log(myObj.sayHello())
+    // Output: Blaine says hello!
+    ~~~
+
+    * We can also change the object that `this` calls.
+      * Example:
+      ~~~
+      let person = {
+        name: 'Blaine',
+        age: 28,
+        weekendAlarm: 'No alarms needed',
+        weekAlarm: 'Alarm set to 7AM',
+        sayHello() {
+       	 return `Hello, my name is ${this.name}`;
+      	},
+        sayGoodbye() {
+        	return 'Goodbye!'
+      	}
+      };
+
+      let friend = {
+        name: 'Chris'
+      }
+
+      // Here we have essentially copied the 'sayHello' function from 'person' to 'friend'.
+      friend.sayHello = person.sayHello
+
+      // Now when we console log it the scope of this is now focused on 'friend' instead of 'person'. So the output is 'Chris' instead of 'Blaine'.
+      console.log(friend.sayHello())
+      // Output: Chris says hello!
+      ~~~
+
+#### Objects: Setters
+  * Getter and setter methods get and set the properties inside of an object.
+  * There are a couple of advantages to using these methods for getting and setting properties directly:
+    * You can check if new data is valid before setting a property.
+    * You can perform an action on the data while you are getting or setting a property.
+    * You can control which properties can be set and retrieved.
+  * It is also best practice to prepend property names with underscores (`_`).
+    * Developers use an underscore before a property name to indicate a property or value should not be modified directly by other code.
+    * It is recommended that you prepending all properties with an underscore, and create setters for all attributes you want to access later in your code.
+    * Example:
+    ~~~
+    let person = {
+      _name: 'Blaine',
+      _age: 28,
+
+      set age(ageIn) {
+        if (typeof ageIn === 'number') {
+          this._age = ageIn;
+          console.log(`${ageIn} is valid input.`);
+        }
+        else {
+          console.log('Invalid input');
+          return 'Invalid input';
+        }
+      }
+
+    };
+
+    // Using an integer is correct. It sets the _age value to 65 using the setter method.
+    person.age = 39;
+    // Output: 39 is valid input.
+
+    // Using anything other than an integer is incorrect which will activate the else portion.
+    person.age = 'Thirty-nine';
+    // Output: Invalid input
+    ~~~
+
+#### Objects: Getters
+  * Once you've set the properties, you need a way to access them. Getters are used to get the property values inside of an object.
+    * Example:
+    ~~~
+    let person = {
+      _name: 'Blaine',
+      _age: 28,
+
+    	get age() {
+        console.log(`${this._name} is ${this._age} years old.`)
+        return this._age;
+      }
+
+    };
+
+    // Gets the _age value
+    console.log(person.age)
+    // Output: Blaine is 39 years old.
+    // Output: 39
+    ~~~
+
+#### Objects: Getters and Setters Together
+  * This is simply an example using both Getters and Setters in the same block of code:
+    * Example:
+    ~~~
+    let person = {
+      _name: 'Blaine',
+      _age: 28,
+
+      set age(ageIn) {
+        if (typeof ageIn === 'number') {
+          this._age = ageIn;
+          console.log(`${ageIn} is valid input.`);
+        }
+        else {
+          console.log('Invalid input');
+          return 'Invalid input';
+        }
+      },
+
+    	get age() {
+        console.log(`${this._name} is ${this._age} years old.`)
+        return this._age;
+      }
+
+    };
+
+    // Using an integer is correct. It sets the _age value to 65 using the setter method.
+    person.age = 39;
+    // Output: 39 is valid input.
+
+    // Using anything other than an integer is incorrect which will activate the else portion.
+    person.age = 'Thirty-nine';
+    // Output: Invalid input
+
+    // Gets the _age value
+    console.log(person.age)
+    // Output: Blaine is 39 years old.
+    // Output: 39
+
     ~~~
 
 ## Blank
