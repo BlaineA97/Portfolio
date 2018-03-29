@@ -707,20 +707,56 @@
     // Either notation is usable (Bracket and Dot).
     console.log(person.hobbies);
     console.log(person['hobbies']);
-    
+
     // Output: ['Gaming', 'Cooking']
     ~~~
 
-#### Blank
-  *
+#### Objects: Editing a Property
+  * In the same way that we would add a property to an object, we can modify a key's value.
     * Example:
     ~~~
+    let person = {
+      name: 'Blaine',
+      age: 28,
+      weekendAlarm: 'No alarms needed',
+      weekAlarm: 'Alarm set to 7AM'
+    };
+
+    // Here we add the 'hobbies' key with its values
+    person['hobbies'] = ['Gaming', 'Cooking']
+
+    // This will print the array as: ['Gaming', 'Cooking']
+    console.log(person['hobbies']);
+    console.log(person.hobbies);
+    // Output: ['Gaming', 'Cooking']
+
+    // Here we alter the 'hobbies' key and provide a new array. Both notations can be used (Dot & Bracket)
+    person.hobbies = ['Gaming']
+    person['hobbies'] = ['Gaming']
+
+    // This console log will print only ['Gaming'] as we have altered the value of 'hobbies'.
+    console.log(person.hobbies);
+    // Output: ['Gaming']
     ~~~
 
-#### Blank
-  *
+#### Objects: Methods
+  * When objects have key-function pairs, we call the function a method.
     * Example:
     ~~~
+    let person = {
+      name: 'Blaine',
+      age: 28,
+      weekendAlarm: 'No alarms needed',
+      weekAlarm: 'Alarm set to 7AM',
+      // 'sayHello' is now the key to this function.
+      sayHello: () => {
+        return 'Hello, there!';
+    	}
+    };
+
+    // When you call the method, don't forget the ()!
+    console.log(person.sayHello())
+    // Output: Hello, there!
     ~~~
 
 ## Blank
