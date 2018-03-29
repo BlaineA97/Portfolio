@@ -616,20 +616,127 @@
   // Output: true
   ~~~
 
-#### Blank
-  *
+## Objects
+  * JavaScript objects are containers that can store data and functions.
+  * The data we store in an object is not ordered — we can only access it by calling its associated key.
+  * You can create an object with key-value pairs using the following syntax:
+  * An objects keys point to values that can be any data type, including other objects.
   * Example:
+    * `let restaurant` creates a variable named `restaurant` that stores the object.
+    * We create the object between curly braces: `{}`.
+    * `name`, `seatingCapacity`, `hasDineInSpecial`, and `entrees` are all keys.
+    * We separate each key from its corresponding value by a colon (`:`).
+    * The value is to the right of the colon. For example, `seatingCapacity`'s value is `120`.
+    * Every key-value pair is separated by a comma `,`.
   ~~~
+  let restaurant = {
+    name: 'Italian Bistro',
+    seatingCapacity: 120,
+    hasDineInSpecial: true,
+    entrees: ['Penne alla Bolognese', 'Chicken Cacciatore', 'Linguine Pesto']
+  };
   ~~~
+
+#### Objects: Accessing Object Properties (Dot Notation)
+  * The most common way to access a key's value is to use dot notation.
+  * To access the properties within an object, we connect the value's name to the key name with a period `.`.
+    * Example:
+    ~~~
+    let person = {
+      name: 'Blaine',
+      age: 28
+    };
+    console.log(person.name);
+    // Output: 'Blaine'
+    ~~~
+
+#### Objects: Accessing Object Properties (Bracket Notation)
+  * Another way to access a key's value is with bracket notation.
+  * To access the properties within an object, we connect the value's name to the key name using brackets and quotes `{''}`.
+    * Example:
+    ~~~
+    let person = {
+      name: 'Blaine',
+      age: 28
+    };
+    console.log(person['name']);
+    // Output: 'Blaine'
+    ~~~
+
+  * One advantage that bracket notation has over dot notation is that you can use variables inside the brackets to select the keys of an object.
+  * Example (using object keys):
+  ~~~
+  let person = {
+    name: 'Blaine',
+    age: 28,
+    weekendAlarm: 'No alarms needed',
+    weekAlarm: 'Alarm set to 7AM'
+  };
+
+  let day = 'Thursday';
+  let alarm;
+
+  if (day === 'Saturday' || day === 'Sunday') {
+    alarm = 'weekendAlarm';
+  } else {
+    alarm = 'weekAlarm';
+  }
+
+  console.log(person[alarm]);
+  // Output: Alarm set to 7AM
+  ~~~
+
+
+#### Objects: Adding a Property
+  * Objects are considered mutable, which means you can change them after they're created.
+  * If we want to add another item to our object we can do so by assigning a value to a new key that's attached to our object.
+  * Even if you save an object to a const variable, you can still add to and edit the key-value pairs inside of it without causing an error.
+    * Example:
+    ~~~
+    let person = {
+      name: 'Blaine',
+      age: 28,
+      weekendAlarm: 'No alarms needed',
+      weekAlarm: 'Alarm set to 7AM'
+    };
+
+    // Either notation (Bracket and Dot) adds a new key called 'hobbies' to the 'person' object.
+    person.hobbies = ['Gaming', 'Cooking']
+    person['hobbies'] = ['Gaming', 'Cooking']
+
+    // Either notation is usable (Bracket and Dot).
+    console.log(person.hobbies);
+    console.log(person['hobbies']);
+    
+    // Output: ['Gaming', 'Cooking']
+    ~~~
 
 #### Blank
   *
-  * Example:
-  ~~~
-  ~~~
+    * Example:
+    ~~~
+    ~~~
+
+#### Blank
+  *
+    * Example:
+    ~~~
+    ~~~
 
 ## Blank
   *
+
+#### Blank
+  *
+    * Example:
+    ~~~
+    ~~~
+
+#### Blank
+  *
+    * Example:
+    ~~~
+    ~~~
 
 #### Blank
   *
