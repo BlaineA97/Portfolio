@@ -994,7 +994,7 @@
     */
     ~~~
 
-#### Classes: Blank
+#### Classes:
   * Although you may see similarities between class and object syntax, there is one important method that sets them apart called the constructor method.
   * JavaScript calls the constructor() method every time it creates a new instance of a class.
     * Example:
@@ -1124,6 +1124,7 @@
     ~~~
 
 #### Classes: Inheritance
+  * Inheritance is when we create a parent class with properties and methods that we can extend to child classes.
   * Classes use inheritance in order to pass down attributes or methods to similar sub-classes.
   * Parent Classes hold attributes and methods that sub-classes (any class that 'extends' the parent class) will have access to.
   * Sub-Classes have access to all attributes and methods provided in the Parent Class it 'extends' from.
@@ -1184,10 +1185,26 @@
     // Output: 20
     ~~~
 
-#### Classes: Blank
-  *
+#### Classes: Static Methods
+  * Static Methods aren't available in individual instances, but you can call them directly from the class.
+  * Static methods are called on the class, but not on instances of the class.
     * Example:
     ~~~
+    class HospitalEmployee {
+      . . .
+      static generatePassword() {
+        return Math.round(Math.random(10001));
+      }
+    }
+
+    class Nurse extends HospitalEmployee {
+      . . .
+    }
+
+    console.log(HospitalEmployee.generatePassword())
+    // Output: (A random whole number)
+    console.log(nurseOlynyk.generatePassword())
+    // Output: An ERROR
     ~~~
 
 #### Classes: Blank
