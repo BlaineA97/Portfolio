@@ -930,22 +930,300 @@
   // Output: 39
   ~~~
 
+## Classes
+  * Classes are a tool that developers use to quickly produce similar objects.
+
+#### Classes: Objects vs. Classes
+  * Take, for example, an object representing a dog named halley.
+  * This dog's name (a key) is "Halley" (a value) and has an age (another key) of 3 (another value).
+  * We'll create the halley object below:
+    * Example:
+    ~~~
+    let halley = {
+      _name: 'Halley',
+      _behavior: 0,
+
+      get name() {
+        return this._name;
+      },
+
+      get behavior() {
+        return this._behavior;
+      },
+
+      incrementBehavior() {
+        this._behavior++;
+      }
+    }
+    ~~~
+
+    * Now, imagine you own a dog daycare and want to create a catalog of all the dogs who belong to the daycare.
+    * Instead of using the syntax above for every dog that joins the daycare, we can create a Dog class that serves as a template for creating new Dog objects.
+    * For each new dog, you can provide a value for their name.
+    ~~~
+    class Dog {
+      constructor(name) {
+        this._name = name;
+        this._behavior = 0;
+      }
+
+      get name() {
+        return this._name;
+      }
+      get behavior() {
+        return this._behavior;
+      }   
+
+      incrementBehavior() {
+        this._behavior ++;
+      }
+    }
+
+    const halley = new Dog('Halley'); // Creates a new Dog named 'halley'
+    console.log(halley.name); // Print name value to console
+    console.log(halley.behavior); // Print behavior value to console
+    halley.incrementBehavior(); // Add one to behavior
+    console.log(halley.name); // Print name value to console
+    console.log(halley.behavior); // Print behavior value to console
+    // Output:
+    /*
+      Halley
+      0
+      Halley
+      1
+    */
+    ~~~
+
+#### Classes: Blank
+  * Although you may see similarities between class and object syntax, there is one important method that sets them apart called the constructor method.
+  * JavaScript calls the constructor() method every time it creates a new instance of a class.
+    * Example:
+    ~~~
+    class Dog {
+      constructor(name) {
+        this.name = name;
+        this.behavior = 0;
+      }
+    }
+    ~~~
+      * Dog is the name of our class. By convention, we capitalize and CamelCase class names.
+      * JavaScript will invoke the constructor() method every time we create a new instance of our Dog class.
+      * This constructor() method accepts one argument, name.
+      * Inside of the constructor() method, we use the this keyword. In the context of a class, this refers to an instance of that class. In the Dog class, we use this to set the value of the Dog instance's name property to the name argument.
+      * Under this.name, we create a property called behavior, which will keep track of the number of times a dog misbehaves. The behavior property is always initialized to zero.
+
+#### Classes: Instance
+  * An instance is an object that contains the property names and methods of a class, but with unique property values.
+    * Example:
+    ~~~
+    class Dog {
+      constructor(name) {
+        this.name = name;
+        this.behavior = 0;
+      }
+    }
+
+    const halley = new Dog('Halley'); // Create new Dog instance
+    console.log(halley.name); // Log the name value saved to halley
+    // Output: 'Halley'
+    ~~~
+    * Below our Dog class, we use the new keyword to create an instance of our Dog class. Let's consider the line of code step-by-step.
+      * We create a new variable named halley that will store an instance of our Dog class.
+      * We use the new keyword to generate a new instance of the Dog class. The new keyword calls the constructor(), runs the code inside of it, and then returns the new instance.
+      * We pass the 'Halley' string to the Dog constructor, which sets the name property to 'Halley'.
+      * Finally, we log the value saved to the name key in our halley object, which logs 'Halley' to the console.
+
+
+#### Classes: Methods
+  * Class method and getter syntax is the same as it is for objects except you can not include commas between methods.
+    * Example:
+    * Note that between each of our methods, we did not include commas.
+    ~~~
+    class Dog {
+      constructor(name) {
+        this._name = name;
+        this._behavior = 0;
+      } // No Comma
+
+      get name() {
+        return this._name;
+      } // No Comma
+
+      get behavior() {
+        return this._behavior;
+      } // No Comma
+
+      incrementBehavior() {
+        this._behavior++;
+      } // No Comma
+    }
+    ~~~
+
+#### Classes: Method Calls / Multiple Objects created from a single Class
+  * Now we can use our new methods to access and manipulate data from Dog instances.
+    * Example:
+    ~~~
+    class Dog {
+      constructor(name) {
+        this._name = name;
+        this._behavior = 0;
+      }
+
+      get name() {
+        return this._name;
+      }
+
+      get behavior() {
+        return this._behavior;
+      }   
+
+      incrementBehavior() {
+        this._behavior++;
+      }
+    }
+
+    const halley = new Dog('Halley');
+
+    let nikko = new Dog('Nikko'); // Create dog named Nikko
+    nikko.incrementBehavior(); // Add 1 to nikko instance's behavior
+    let bradford = new Dog('Bradford'); // Create dog name Bradford
+    console.log(nikko.behavior); // Logs 1 to the console
+    console.log(bradford.behavior); // Logs 0 to the console
+    ~~~
+      * In the example above, we create the Dog class, then create an instance, and save it to a variable named halley.
+      * The syntax for calling methods and getters on an instance is the same as calling them on an object — append the instance with a period, then the property or method name. For methods, you must also include opening and closing parentheses.
+      * In the example above, we create two new Dog instances, nikko and bradford. Because we increment the behavior of our nikko instance, but not bradford, accessing nikko.behavior returns 1 and accessing bradford.behavior returns 0.
+    * Example Two:
+    ~~~
+    class Surgeon {
+      constructor(name, department) {
+        this._name = name;
+        this._department = department;
+        this._remainingVacationDays = 20;
+      }
+      get name() {
+        return this._name
+      }
+      get department() {
+        return this._department
+      }
+      get remainingVacationDays() {
+        return this._remainingVacationDays
+      }
+      takeVacationDays(daysOff) {
+    this._remainingVacationDays =     this._remainingVacationDays - daysOff
+      }
+    }
+
+    const surgeonCurry = new Surgeon('Curry', 'Cardiovascular');
+    const surgeonDurant = new Surgeon('Durant', 'Orthopedics');
+
+    console.log(surgeonCurry.name)
+    console.log(surgeonCurry.takeVacationDays(3))
+    console.log(surgeonCurry.remainingVacationDays)
+    ~~~
+
+#### Classes: Inheritance
+  * Classes use inheritance in order to pass down attributes or methods to similar sub-classes.
+  * Parent Classes hold attributes and methods that sub-classes (any class that 'extends' the parent class) will have access to.
+  * Sub-Classes have access to all attributes and methods provided in the Parent Class it 'extends' from.
+    * Example of a Parent Class (Which is a normal class):
+    ~~~
+    class HospitalEmployee {
+      . . . attributes / methods . . .
+    }
+    ~~~
+    * Example of a Sub-Class (Which 'extends' from a Parent Class):
+    ~~~
+    class Nurse extends HospitalEmployee { // Note that 'Nurse' can use any and all attributes and methods provided in 'HospitalEmployee'.
+      . . . new attributes / new methods . . .
+    }
+    ~~~
+
+  * The `extends` keyword makes the methods of the HospitalEmployee class available inside the Nurse class.
+  * The `super` keyword calls the constructor of the parent class.
+  * Constructors in Sub-Classes can use `super(attribute)` to pass the argument of the 'Nurse' Class to the Constructor of the 'HospitalEmployee' Parent Class. When the 'HospitalEmployee' Constructor runs, it sets `this._attribute = attribute;` for the new Nurse instance.
+  * Any methods or attributes that are specific to a particular sub-class should be added to that sub-class only. This keeps the Parent Class from becoming too cluttered.
+    * Example of a Parent Class:
+    ~~~
+    class HospitalEmployee { // Parent Class (Holds any attributes or methods that sub-classes will also use)
+      constructor(name) {
+        this._name = name; // name is something all sub-classes will use and can be 'forwarded' to the subclasses.
+        this._remainingVacationDays = 20; // remainingVacationDays is another attribute that all sub-classes will use.
+      }
+
+      get name() { // This get name method is another 'forwarded' item from the parent class.
+        return this._name;
+      }
+
+      get remainingVacationDays() {
+        return this._remainingVacationDays;
+      }
+
+      takeVacationDays(daysOff) {
+        this._remainingVacationDays -= daysOff;
+      }
+    }
+    ~~~
+    * Example of a Sub-Class (Which 'extends' from a Parent Class):
+    ~~~
+    class Nurse extends HospitalEmployee { // This is an 'extension of the Parent HospitalEmployee Class'
+      constructor(name, certifications) {
+        super(name); // This uses the constructor of the Parent Class (HospitalEmployee) to set the name for this Nurse instance.
+        this._certifications = certifications; // This is a sub-class specific attribute and is only accessible in Nurse.
+      }
+    }
+
+    const nurseOlynyk = new Nurse('Olynyk', ['Trauma', 'Pediatrics']);
+
+    console.log(nurseOlynyk)
+    // Output: Nurse { _name: 'Olynyk', _remainingVacationDays: 20, _certifications: [ 'Trauma', 'Pediatrics' ] }
+    console.log(nurseOlynyk.name)
+    // Output: Olynyk
+    console.log(nurseOlynyk._remainingVacationDays)
+    // Output: 20
+    ~~~
+
+#### Classes: Blank
+  *
+    * Example:
+    ~~~
+    ~~~
+
+#### Classes: Blank
+  *
+    * Example:
+    ~~~
+    ~~~
+
+#### Classes: Blank
+  *
+    * Example:
+    ~~~
+    ~~~
+
+#### Classes: Blank
+  *
+    * Example:
+    ~~~
+    ~~~
+
 ## Blank
   *
 
-#### Blank
+#### Blank: Blank
   *
     * Example:
     ~~~
     ~~~
 
-#### Blank
+#### Blank: Blank
   *
     * Example:
     ~~~
     ~~~
 
-#### Blank
+#### Blank: Blank
   *
     * Example:
     ~~~
