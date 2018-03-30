@@ -23,6 +23,9 @@ class Navigation extends Component {
           <Link to="/projects" className="Navigation-menu-link">
             Projects
           </Link>
+          <Link to="/rpg" className="Navigation-menu-link">
+            <p>Rpg</p>
+          </Link>
           <Link to="/hobbies" className="Navigation-menu-link">
             <p>Hobbies</p>
           </Link>
