@@ -3,6 +3,8 @@ import './Rpg.css';
 import { Link } from 'react-router-dom';
 import Navigation from '../Navigation';
 import Footer from '../Footer';
+import HealthBar from './HealthBar';
+import CombatControls from './CombatControls';
 
 class Rpg extends Component {
   constructor(props) {
@@ -10,9 +12,10 @@ class Rpg extends Component {
     this.rollDice = this.rollDice.bind(this);
     this.reduceHp = this.reduceHp.bind(this);
     this.state = {
-      playerHp: 10,
       combatControlsHidden: true,
-      enemyHp: 15
+      enemyHp: 15,
+      playerHp: 123,
+      isDead: false
     };
   }
 
@@ -69,17 +72,16 @@ checkDead - If dead, options are removed
         <div id="Rpg-wrapper">
 
           <div id="player-stats">
-            <div id="Combat-player-hp-exterior">
-              <div id="Combat-player-hp-outline">
-                <div id="Combat-player-hp-interior">{this.state.playerHp}</div>
-              </div>
-            </div>
-            <span className="Combat-portrait"></span>
-            <div id="Rpg-attacks">
+            <div id="HealthBar-container"><HealthBar /></div>
+            <div id="CombatPortrait-container"></div>
+          <div id="CombatControls-container">
+            <CombatControls isDead={this.state.isDead} playerHp={this.state.playerHp} />
+          </div>
+            {/* <div id="Rpg-attacks">
               <button className="action-button" onClick={() => this.attack(20)}>Attack</button>
               <button className="action-button" onClick={() => this.attack(12)}>Defend</button>
               <button className="action-button" onClick={() => this.attack(6)}>Flee</button>
-            </div>
+            </div> */}
           </div>
 
           <div id="battle-stats">
