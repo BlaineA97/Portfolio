@@ -1209,7 +1209,7 @@
 
 # Explore ReactJS:
 
-## JSX
+## Basic JSX
   * JSX is a syntax extension for JavaScript. It was written to be used with React. JSX code looks a lot like HTML.
   * If a JavaScript file contains JSX code, then that file will have to be compiled as it  not considered valid JavaScript. Web browsers can't read it!.
   * That means that before the file reaches a web browser, a JSX compiler will translate any JSX into regular JavaScript.
@@ -1218,7 +1218,7 @@
     const h1 = <h1>Hello world</h1>;
     ~~~
 
-#### JSX: Element
+#### Basic JSX: Element
   * A basic unit of JSX is called a JSX element.
   * This JSX element looks exactly like HTML! The only noticeable difference is that you would find it in a JavaScript file, instead of in an HTML file.
     * Example:
@@ -1226,13 +1226,574 @@
     <h1>Hello world</h1>
     ~~~
 
-#### Blank: Blank
+#### Basic JSX: Expressions
+  * JSX elements are treated as JavaScript expressions. They can go anywhere that JavaScript expressions can go.
+  * That means that a JSX element can be saved in a variable, passed to a function, stored in an object or array...you name it.
+    * Example (Single Element):
+    ~~~
+    const navBar = <nav>I am a nav bar</nav>;
+    ~~~
+    * Example (Multiple Elements):
+    ~~~
+    const myTeam = {
+      center: <li>Benzo Walli</li>,
+      powerForward: <li>Rasha Loa</li>,
+      smallForward: <li>Tayshaun Dasmoto</li>,
+      shootingGuard: <li>Colmar Cumberbatch</li>,
+      pointGuard: <li>Femi Billon</li>
+    };
+    ~~~
+
+#### Basic JSX: Attributes
+  * JSX elements can have attributes, just like HTML elements can.
+  * A JSX attribute is written using HTML-like syntax: a name, followed by an equals sign, followed by a value.
+    * Example:
+    ~~~
+    <a href="http://www.example.com">Welcome to the Web</a>;
+
+    const title = <h1 id="title">Introduction to React.js: Part I</h1>;
+
+    const panda = <img src="images/panda.jpg" alt="panda" width="500px" height="500px" />;
+
+    const p1 = <p id="large">foo</p>
+    const p2 = <p id="small">bar</p>      
+    ~~~
+
+#### Basic JSX: Nested
+  * You can nest JSX elements inside of other JSX elements, just like in HTML.
+    * Example (Without HTML indentation):
+    ~~~
+    <a href="https://www.example.com"><h1>Click me!</h1></a>
+    ~~~
+    * Example (With HTML indentation):
+      * If you use multiple lines the JSX must be wrapped in parentheses.
+    ~~~
+    (
+    <a href="https://www.example.com">
+      <h1>
+        Click me!
+      </h1>
+    </a>
+    )
+    ~~~
+    * Example (With HTML indentation):
+      * If you use multiple lines the JSX must be wrapped in parentheses.
+    ~~~
+    const theExample = (
+      <a href="https://www.example.com">
+        <h1>
+          Click me!
+        </h1>
+      </a>
+    );
+    ~~~
+
+#### Basic JSX: Outer Elements
+  * A JSX expression must have exactly one outermost element.
+  * The first opening tag and the final closing tag of a JSX expression must belong to the same JSX element!
+  * In most cases a `<div></div>` tag must encompass everything that will render.
+    * NOT Working Example:
+    ~~~
+    const paragraphs = (
+      <p>I am a paragraph.</p>
+      <p>I, too, am a paragraph.</p>
+    );
+    ~~~
+    * Working Example:
+    ~~~
+    const paragraphs = (
+      <div id="i-am-the-outermost-element">
+        <p>I am a paragraph.</p>
+        <p>I, too, am a paragraph.</p>
+      </div>
+    );
+    ~~~
+
+#### Basic JSX: Rendering
+  * To render a JSX expression means to make it appear onscreen.
+    * Example:
+    ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+
+    ReactDOM.render(<h1>Hello world</h1>, document.getElementById('app'));
+    ~~~
+
+#### Basic JSX: ReactDOM.render()
+  * ReactDOM is the name of a JavaScript library. This library contains several React-specific methods, all of which deal with the DOM in some way or another.
+  * ReactDOM.render() is the most common way to render JSX. It takes a JSX expression, creates a corresponding tree of DOM nodes, and adds that tree to the DOM. That is the way to make a JSX expression appear onscreen.
+  * `<h1>Hello world</h1>` is the first argument being passed to ReactDOM.render(). ReactDOM.render()'s first argument should be a JSX expression, and it will be rendered to the screen.
+  * The first argument is appended to whatever element is selected by the second argument.
+    * Example:
+    ~~~
+    ReactDOM.render( // The ReactDOM render call
+      <h1>Hello world</h1>, // The JSX element aka the first argument
+      document.getElementById('app')); // The Element we append the first argument to aka the second argument
+
+    ~~~
+
+#### Basic JSX: Passing a Variable to ReactDOM.render()
+  * ReactDOM.render()'s first argument should evaluate to a JSX expression, it doesn't have to literally be a JSX expression.
+  * The first argument could also be a variable, so long as that variable evaluates to a JSX expression.
+    * Example:
+    ~~~
+    const toDoList = (
+      <ol>
+        <li>Learn React</li>
+        <li>Become a Developer</li>
+      </ol>
+    );
+
+    ReactDOM.render(
+      toDoList,
+      document.getElementById('app')
+    );
+    ~~~
+
+#### Basic JSX: The Virtual DOM
+  * [The Virtual Dom Explained](https://www.codecademy.com/articles/react-virtual-dom)
+  * One special thing about ReactDOM.render() is that it only updates DOM elements that have changed.
+  * That means that if you render the exact same thing twice in a row, the second render will do nothing:
+    * Example:
+    ~~~
+    const hello = <h1>Hello world</h1>;
+
+    // This will add "Hello world" to the screen:
+
+    ReactDOM.render(hello, document.getElementById('app'));
+
+    // This won't do anything at all:
+
+    ReactDOM.render(hello, document.getElementById('app'));
+    ~~~
+
+## Advanced JSX
+  *
+
+#### Advanced JSX: class vs className
+  * In HTML, it's common to use `class` as an attribute name, however, In JSX, you can't use the word `class`! You have to use `className` instead.
+  * This is because JSX gets translated into JavaScript, and class is a reserved word in JavaScript.
+    * Example:
+    ~~~
+    // Incorrect
+    <h1 class="big">Hey</h1>
+
+    // Correct
+    <h1 className="big">Hey</h1>
+    ~~~
+
+#### Advanced JSX: Self-Closing Tags
+  * Most HTML elements use two tags: an opening tag (<div>), and a closing tag (</div>).
+  * However, some HTML elements such as <img> and <input> use only one tag. The tag that belongs to a single-tag element isn't an opening tag nor a closing tag; it's a self-closing tag.
+  * When you write a self-closing tag in HTML, it is optional to include a forward-slash immediately before the final angle-bracket:
+  * BUT! In JSX, you have to include the slash. If you write a self-closing tag in JSX and forget the slash, you will raise an error:
+    * Example (In HTML):
+    ~~~
+    Fine in HTML with a slash:
+      <br />
+
+    Also fine, without the slash:
+      <br>
+    ~~~
+    * Example (In JSX):
+    ~~~
+    Fine in JSX:
+      <br />
+
+    NOT FINE AT ALL in JSX:
+      <br>
+    ~~~
+
+#### Advanced JSX: Curly Braces in JSX
+  * Any code in between the tags of a JSX element will be read as JSX, not as regular JavaScript! JSX doesn't add numbers - it reads them as text, just like HTML.
+  * By wrapping your code in curly braces your saying "Even though I am located in between JSX tags, treat me like ordinary JavaScript and not like JSX."
+    * Example:
+    ~~~
+    // Will return "2 + 3"
+    ReactDOM.render(
+      <h1>2 + 3</h1>,
+      document.getElementById('app')
+    );
+
+    // Will return "5"
+    ReactDOM.render(
+      <h1>{2 + 3}</h1>,
+      document.getElementById('app')
+    );
+    ~~~
+
+#### Advanced JSX: Variables in JSX
+  * When you inject JavaScript into JSX, that JavaScript is part of the same environment as the rest of the JavaScript in your file.
+  * That means that you can access variables while inside of a JSX expression, even if those variables were declared on the outside.
+    * Example:
+    ~~~
+    // Declare a variable:
+    const name = 'Gerdo';
+
+    // Access your variable
+    // from inside of a JSX expression:
+    const greeting = <p>Hello, {name}!</p>;
+    ~~~
+
+#### Advanced JSX: Variable Attributes in JSX
+  * When writing JSX, it's common to use variables to set attributes.
+    * Example:
+    ~~~
+    // Use a variable to set the `height` and `width` attributes:
+
+    const sideLength = "200px";
+
+    const panda = (
+      <img
+        src="images/panda.jpg"
+        alt="panda"
+        height={sideLength}
+        width={sideLength} />
+    );
+    ~~~
+  * Object properties are also often used to set attributes:
+    * Example:
+    ~~~
+    const pics = {
+      panda: "http://bit.ly/1Tqltv5",
+      owl: "http://bit.ly/1XGtkM3",
+      owlCat: "http://bit.ly/1Upbczi"
+    };
+
+    const panda = (
+      <img
+        src={pics.panda}
+        alt="Lazy Panda" />
+    );
+
+    const owl = (
+      <img
+        src={pics.owl}
+        alt="Unimpressed Owl" />
+    );
+
+    const owlCat = (
+      <img
+        src={pics.owlCat}
+        alt="Ghastly Abomination" />
+    );
+    ~~~
+
+#### Advanced JSX: Event Listeners in JSX
+  * [Event Listeners List](https://reactjs.org/docs/events.html#supported-events)
+  * JSX elements can have event listeners, just like HTML elements can.
+  * Programming in React means constantly working with event listeners.
+  * You create an event listener by giving a JSX element a special attribute called `onClick()`
+  * An event listener attribute's value should be a function.
+    * Example:
+    ~~~
+    function myFunc() {
+      alert('Make myFunc the pFunc... omg that was horrible i am so sorry');
+    }
+
+    <img onClick={myFunc} />
+    <img onMouseOver={myFunc} />
+    ~~~
+  * Note that in HTML, event listener names are written in all lowercase, such as `onclick` or `onmouseover`.
+  * In JSX, event listener names are written in camelCase, such as `onClick` or `onMouseOver`.
+
+#### Advanced JSX: JSX Conditionals: If Statements
+  * Here's a rule that you need to know: you can not inject an if statement into a JSX expression.
+    * Bad Code Example:
+    ~~~
+    (
+      <h1>
+        {
+          if (purchase.complete) {
+            'Thank you for placing an order!'
+          }
+        }
+      </h1>
+    )
+    ~~~
+  * If you can't inject an if statement into JSX how can you write a conditional?
+  * This is a common way to express conditionals in JSX.
+  * Well, one option is to write an if statement, and not inject it into JSX.
+    * Good Code Example:
+    ~~~
+    let message;
+
+    if (user.age >= drinkingAge) {
+      message = (
+        <h1>
+          Hey, check out this alcoholic beverage!
+        </h1>
+      );
+    } else {
+      message = (
+        <h1>
+          Hey, check out these earrings I got at Claire's!
+        </h1>
+      );
+    }
+
+    ReactDOM.render(
+      message,
+      document.getElementById('app')
+    );
+    ~~~
+    * Another Good Code Example:
+    ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+
+    function coinToss() {
+      // This function will randomly return either 'heads' or 'tails'.
+      return Math.random() < 0.5 ? 'heads' : 'tails';
+    }
+
+    const pics = {
+      kitty: 'https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-kitty.jpg',
+      doggy: 'https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-puppy.jpeg'
+    };
+    let img;
+
+    // if/else statement begins here:
+    if (coinToss() === 'heads') {
+      img = (
+        <img src={pics.kitty} />
+        )
+    } else {
+      img = (
+      <img src={pics.doggy} />
+      )
+    }
+
+    ReactDOM.render(img, document.getElementById('app'));
+    ~~~
+
+#### Advanced JSX: JSX Conditionals: The Ternary Operator
+  * There's a more compact way to write conditionals in JSX: the ternary operator.
+  * The ternary operator works the same way in React as it does in regular JavaScript. However, it shows up in React surprisingly often.
+  * Recall how it works: you write `x ? y : z`, where `x`, `y`, and `z` are all JavaScript expressions. When your code is executed, `x` is evaluated as either "truthy" or "falsy." If `x` is truthy, then the entire ternary operator returns `y`. If `x` is falsy, then the entire ternary operator returns `z`.
+  [In-depth Ternary Operator Examples](https://stackoverflow.com/questions/6259982/how-do-you-use-the-conditional-operator-in-javascript)
+    * Example:
+    ~~~
+    const headline = (
+      <h1>
+        { age >= drinkingAge ? 'Buy Drink' : 'Do Teen Stuff' }
+      </h1>
+    );
+    ~~~
+    ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+
+    function coinToss () {
+      // Randomly return either 'heads' or 'tails'.
+      return Math.random() < 0.5 ? 'heads' : 'tails';
+    }
+
+    const pics = {
+      kitty: 'https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-kitty.jpg',
+      doggy: 'https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-puppy.jpeg'
+    };
+
+    const img = <img src={pics[coinToss() === 'heads' ? 'kitty' : 'doggy']} />;
+
+    ReactDOM.render(
+    	img,
+    	document.getElementById('app')
+    );
+    ~~~
+
+#### Advanced JSX: JSX Conditionals: &&
+  * Like the ternary operator, && is not React-specific, but it shows up in React surprisingly often.
+  * && works best in conditionals that will sometimes do an action, but other times do nothing at all.
+  * Every time that you see && in this example, either some code will run, or else no code will run.
+    * Example:
+    ~~~
+    const tasty = (
+      <ul>
+        <li>Applesauce</li>
+        { !baby && <li>Pizza</li> }
+        { age > 15 && <li>Brussels Sprouts</li> }
+        { age > 20 && <li>Oysters</li> }
+        { age > 25 && <li>Grappa</li> }
+      </ul>
+    );
+
+    ~~~
+
+#### Advanced JSX: .map in JSX
+  * The array method .map() comes up often in React. It's good to get in the habit of using it alongside JSX.
+  * If you want to create a list of JSX elements, then .map() is often your best bet.
+    * Example:
+    ~~~
+    const strings = ['Home', 'Shop', 'About Me'];
+
+    const listItems = strings.map(string => <li>{string}</li>);
+
+    <ul>{listItems}</ul>
+    ~~~
+    * Example:
+    ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+
+    const people = ['Rowe', 'Prevost', 'Gare'];
+
+    const peopleLis = people.map(person =>
+      // expression goes here:
+    	<li>{person}</li>
+    );
+
+    // ReactDOM.render goes here:
+    ReactDOM.render(<ul>{peopleLis}</ul>,document.getElementById('app'));
+    ~~~
+
+#### Advanced JSX: Keys
+  * When you make a list in JSX, sometimes your list will need to include something called keys:
+  * A key is a JSX attribute. The attribute's name is key. The attribute's value should be something unique, similar to an id attribute.
+    * keys don't do anything that you can see! React uses them internally to keep track of lists. If you don't use keys when you're supposed to, React might accidentally scramble your list-items into the wrong order.
+    * Not all lists need to have keys. A list needs keys if either of the following are true:
+      * The list-items have memory from one render to the next. For instance, when a to-do list renders, each item must "remember" whether it was checked off. The items shouldn't get amnesia when they render.
+      * A list's order might be shuffled. For instance, a list of search results might be shuffled from one render to the next.
+    * If neither of these conditions are true, then you don't have to worry about keys. If you aren't sure then it never hurts to use them!
+    * Example:
+    ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+
+    const people = ['Rowe', 'Prevost', 'Gare'];
+
+    const peopleLis = people.map((person, i) =>
+      // expression goes here:
+    	<li key={'person_' + i}>{person}</li>
+    );
+
+    // ReactDOM.render goes here:
+    ReactDOM.render(<ul>{peopleLis}</ul>,document.getElementById('app'));
+    ~~~
+
+#### Advanced JSX: React.createElement
+  * The majority of React programmers do use JSX, but you should understand that it is possible to write React code without it.
+  * When a JSX element is compiled, the compiler transforms the JSX element into the method that you see below: React.createElement().
+  * Every JSX element is secretly a call to React.createElement().
+    * Example in JSX:
+    ~~~
+    const h1 = <h1>Hello world</h1>;
+    ~~~
+    * Example in React:
+    ~~~
+    const h1 = React.createElement(
+      "h1",
+      null,
+      "Hello, world"
+    );
+    ~~~
+
+## ReactJS Components
+  * React applications are made out of components.
+  * A component is a small, reusable chunk of code that is responsible for one job. That job is often to render some HTML.
+
+#### ReactJS Components: Import React
+  * This line of code creates a new variable. That variable's name is React, and its value is a particular, imported JavaScript object:
+  ~~~
+  import React from 'react';
+  ~~~
+    * This imported object contains methods that you need in order to use React. The object is called the React library.
+    * you have to import the React library, and save it in a variable named React, before you can use any JSX at all.
+  * Building a React Component from the ground up, step 1:
+  ~~~
+  import React from 'react';
+  ~~~
+
+#### ReactJS Components: Import ReactDOM
+  * The methods imported from 'react-dom' are meant for interacting with the DOM. You are already familiar with one of them: ReactDOM.render().
+  ~~~
+  import ReactDOM from 'react-dom';
+  ~~~
+  * The methods imported from 'react' don't deal with the DOM at all. They don't engage directly with anything that isn't part of React.
+  * To clarify: the DOM is used in React applications, but it isn't part of React. After all, the DOM is also used in countless non-React applications. Methods imported from 'react' are only for pure React purposes, such as creating components or writing JSX elements.
+  * Building a React Component from the ground up, step 1:
+  ~~~
+  import React from 'react';
+  import ReactDOM from 'react-dom';
+  ~~~
+
+#### ReactJS Components: Create a Component Class
+  * You've learned that a React component is a small, reusable chunk of code that is responsible for one job, which often involves rendering HTML.
+  * Here's another fact about components: every component must come from a component class.
+  * A component class is like a factory that creates components. If you have a component class, then you can use that class to produce as many components as you want.
+  * To make a component class, you use a base class from the React library: React.Component.
+    * React.Component is a JavaScript class. To create your own component class, you must subclass React.Component.
+    * You can do this by using the syntax class YourComponentNameGoesHere extends React.Component {}.
+    * Example:
+    ~~~
+    class MyComponentClass extends React.Component {
+      render() {
+        return <h1>Hello world</h1>;
+      }
+    }
+    ~~~
+    * Building a React Component from the ground up, step 1:
+    ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+
+    class x extends React.Component {}
+    ~~~
+#### ReactJS Components: Blank
   *
     * Example:
     ~~~
     ~~~
 
-#### Blank: Blank
+#### ReactJS Components: Blank
+  *
+    * Example:
+    ~~~
+    ~~~
+
+#### ReactJS Components: Blank
+  *
+    * Example:
+    ~~~
+    ~~~
+
+#### ReactJS Components: Blank
+  *
+    * Example:
+    ~~~
+    ~~~
+
+#### ReactJS Components: Blank
+  *
+    * Example:
+    ~~~
+    ~~~
+
+#### ReactJS Components: Blank
+  *
+    * Example:
+    ~~~
+    ~~~
+
+#### ReactJS Components: Blank
+  *
+    * Example:
+    ~~~
+    ~~~
+
+#### ReactJS Components: Blank
+  *
+    * Example:
+    ~~~
+    ~~~
+
+#### ReactJS Components: Blank
+  *
+    * Example:
+    ~~~
+    ~~~
+
+#### ReactJS Components: Blank
   *
     * Example:
     ~~~
