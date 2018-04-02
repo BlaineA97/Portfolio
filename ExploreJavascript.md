@@ -1,4 +1,4 @@
-# Javascript Examples:
+# Explore JavaScript:
 
 ## Functions:
   * Functions in JavaScript are generally declared as either a function declaration or a function expression.
@@ -1207,19 +1207,32 @@
     // Output: An ERROR
     ~~~
 
-#### Classes: Blank
+# Explore ReactJS:
+
+## JSX
+  * JSX is a syntax extension for JavaScript. It was written to be used with React. JSX code looks a lot like HTML.
+  * If a JavaScript file contains JSX code, then that file will have to be compiled as it  not considered valid JavaScript. Web browsers can't read it!.
+  * That means that before the file reaches a web browser, a JSX compiler will translate any JSX into regular JavaScript.
+    * Example of JSX:
+    ~~~
+    const h1 = <h1>Hello world</h1>;
+    ~~~
+
+#### JSX: Element
+  * A basic unit of JSX is called a JSX element.
+  * This JSX element looks exactly like HTML! The only noticeable difference is that you would find it in a JavaScript file, instead of in an HTML file.
+    * Example:
+    ~~~
+    <h1>Hello world</h1>
+    ~~~
+
+#### Blank: Blank
   *
     * Example:
     ~~~
     ~~~
 
-#### Classes: Blank
-  *
-    * Example:
-    ~~~
-    ~~~
-
-#### Classes: Blank
+#### Blank: Blank
   *
     * Example:
     ~~~
