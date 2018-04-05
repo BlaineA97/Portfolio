@@ -1711,7 +1711,7 @@
   ~~~
   * The methods imported from 'react' don't deal with the DOM at all. They don't engage directly with anything that isn't part of React.
   * To clarify: the DOM is used in React applications, but it isn't part of React. After all, the DOM is also used in countless non-React applications. Methods imported from 'react' are only for pure React purposes, such as creating components or writing JSX elements.
-  * Building a React Component from the ground up, step 1:
+  * Building a React Component from the ground up, step 2:
   ~~~
   import React from 'react';
   import ReactDOM from 'react-dom';
@@ -1732,68 +1732,280 @@
       }
     }
     ~~~
-    * Building a React Component from the ground up, step 1:
+    * Building a React Component from the ground up, step 3:
     ~~~
     import React from 'react';
     import ReactDOM from 'react-dom';
 
     class x extends React.Component {}
     ~~~
-#### ReactJS Components: Blank
+#### ReactJS Components: Name a Component Class
+  * When you declare a new component class, you need to give that component class a name. On line 4, notice that our component class's name is MyComponentClass.
+  * Component class variable names must begin with capital letters!
+    * This adheres to JavaScript's class syntax. It also adheres to a broader programming convention in which class names are written in UpperCamelCase.
+    * Building a React Component from the ground up, step 4:
+    ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+
+    class MyComponentClass extends React.Component {}
+    ~~~
+
+#### ReactJS Components: The Render Function
+  * A component class is like a factory that builds components. It builds these components by consulting a set of instructions, which you must provide. Let's talk about these instructions!
+  * For starters, these instructions should take the form of a class declaration body. That means that they will be delimited by curly braces, like this:
+    * Example:
+    ~~~
+    class ComponentFactory extends React.Component {
+        // instructions go here, between the curly braces
+    }
+    ~~~
+    * There is only one property that you have to include in your instructions: a render method.
+    ~~~
+    class ComponentFactory extends React.Component {
+      render() {}
+    }
+    ~~~
+    * A render method must contain a return statement. Usually, this return statement returns a JSX expression:
+    ~~~
+    class ComponentFactory extends React.Component {
+      render() {
+        return <h1>Hello world</h1>;
+      }
+    }
+    ~~~
+    * Building a React Component from the ground up, step 5:
+    ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+
+    class MyComponentClass extends React.Component {
+      render() {
+      	return <h1>Hello world</h1>
+      }
+    }
+    ~~~
+
+#### ReactJS Components: Create a Component Instance
+  * MyComponentClass is now a working component class! It's ready to follow its instructions and make some React components.
+  * So, let's make a React component! It only takes one more line:
+    * Example:
+    ~~~
+    <MyComponentClass />
+    ~~~
+    * To make a React component, you write a JSX element. Instead of naming your JSX element something like h1 or div like you've done before, give it the same name as a component class. Voilà, there's your component instance!
+    * JSX elements can be either HTML-like, or component instances. JSX uses capitalization to distinguish between the two!
+    * That is the React-specific reason why component class names must begin with capital letters.
+    * In a JSX element, that capitalized first letter says, "I will be a component instance and not an HTML tag."
+    * Building a React Component from the ground up, step 6:
+    ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+
+    class MyComponentClass extends React.Component {
+      render() {
+        return <h1>Hello world</h1>;
+      }
+    }
+
+    // component goes here:
+    <MyComponentClass />
+    ~~~
+
+#### ReactJS Components: Render A Component
   *
     * Example:
     ~~~
-    ~~~
+    class MyComponentClass extends React.Component
+    { // everything in between these curly-braces is instructions for how to build components
 
-#### ReactJS Components: Blank
+      render() {
+        return <h1>Hello world</h1>;
+      }
+    }
+    ~~~
+    * This class declaration results in a new component class, in this case named MyComponentClass. MyComponentClass has one method, named render. This all happens via standard JavaScript class syntax.
+    * Whenever you make a component, that component inherits all of the methods of its component class. MyComponentClass has one method: MyComponentClass.render(). Therefore, <MyComponentClass /> also has a method named render.
+    * You could make a million different <MyComponentClass /> instances, and each one would inherit this same exact render method.
+    * To call a component's render method, you pass that component to ReactDOM.render().
+    ~~~
+    ReactDOM.render(
+      <MyComponentClass />,
+      document.getElementById('app')
+    );
+    ~~~
+      * ReactDOM.render() will tell <MyComponentClass /> to call its render method.
+      * <MyComponentClass /> will call its render method, which will return the JSX element <h1>Hello world</h1>.
+      * ReactDOM.render() will then take that resulting JSX element, and add it to the virtual DOM. This will make "Hello world" appear on the screen.
+      * Building a React Component from the ground up, step 7:
+      ~~~
+      import React from 'react';
+      import ReactDOM from 'react-dom';
+
+      class MyComponentClass extends React.Component {
+        render() {
+          return <h1>Hello world</h1>;
+        }
+      }
+
+      // component goes here:
+
+      ReactDOM.render(<MyComponentClass />, document.getElementById('app'));
+      ~~~
+
+## Components & Advanced JSX
   *
+
+#### Components & Advanced JSX: Use a Variable Attribute in a Component
+  * You can, and often will, inject JavaScript into JSX inside of a render function.
     * Example:
     ~~~
-    ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
 
-#### ReactJS Components: Blank
-  *
+    const redPanda = {
+      src: 'https://upload.wikimedia.org/wikipedia/commons/b/b2/Endangered_Red_Panda.jpg',
+      alt: 'Red Panda',
+      width:  '200px'
+    };
+
+    class RedPanda extends React.Component {
+      render() {
+        return (
+          <div>
+            <h1>Cute Red Panda</h1>
+            <img
+              src={redPanda.src}
+              alt={redPanda.alt}
+              width={redPanda.width} />
+          </div>
+        );
+      }
+    }
+
+    ReactDOM.render(
+      <RedPanda />,
+      document.getElementById('app')
+    );
+    ~~~
     * Example:
     ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+
+
+    const owl = {
+      title: 'Excellent Owl',
+      src: 'https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-owl.jpg'
+    };
+
+    // Component class starts here:
+    class Owl extends React.Component {
+      render() {
+        return (
+          <div>
+            <h1>{owl.title}</h1>
+            <img
+              src={owl.src}
+              alt={owl.title} />
+          </div>
+        )
+      }
+    }
+
+    ReactDOM.render(<Owl/>,document.getElementById('app'));
     ~~~
 
-#### ReactJS Components: Blank
-  *
+#### Components & Advanced JSX: Put Logic in a Render Function
+  * A render() function must have a return statement. However, that isn't all that it can have.
+  * A render() function can also be a fine place to put simple calculations that need to happen right before a component renders. Here's an example of some calculations inside of a render function:
     * Example:
     ~~~
+    class Random extends React.Component {
+      render() {
+        // First, some logic that must happen
+        // before rendering:
+        const n = Math.floor(Math.random() * 10 + 1);
+        // Next, a return statement
+        // using that logic:
+        return <h1>The number is {n}!</h1>;
+      }
+    }
+    ~~~
+    * A common mistake is placing the functions above the render when it should be placed between render and return.
+    * Common Mistake Example:
+    ~~~
+    class Random extends React.Component {
+      // This should be in the render function:
+      const n = Math.floor(Math.random() * 10 + 1);
+
+      render() {
+        return <h1>The number is {n}!</h1>;
+      }
+    };
+    ~~~
+    * Another Example:
+    ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';`
+
+    const fiftyFifty = Math.random() < 0.5;
+
+    // New component class starts here:
+    class TonightsPlan extends React.Component {
+      render() {
+        let thing;
+        if (fiftyFifty === true) {
+          thing = "Tonight I'm going out WOOO"
+        } else {
+          thing = "Tonight I'm going to bed WOOO"
+        }
+
+        return (
+          <h1>{thing}</h1>
+        )
+      }
+    }
+
+    ReactDOM.render(<TonightsPlan />, document.getElementById('app'));`
     ~~~
 
-#### ReactJS Components: Blank
-  *
+#### Components & Advanced JSX: Using `this` in a Component
+  * In JavaScript `this` is the current execution context of a function.
     * Example:
     ~~~
-    ~~~
+    class IceCreamGuy extends React.Component {
+      get food() {
+        return 'ice cream';
+      }
 
-#### ReactJS Components: Blank
-  *
+      render() {
+        return <h1>I like {this.food}.</h1>;
+      }
+    }
+    ~~~
+      * Since this will evaluate to an instance of `IceCreamGuy`, `this.food` will evaluate to a call of `IceCreamGuy`'s `.food` method. This method will, in turn, evaluate to the string "ice cream."
+
+#### Components & Advanced JSX: Using an Event Listener in a Component
+  * An Event Listener 'listens' for the user to perform a specific event on a given element and then executes the function or code attached to it.
     * Example:
     ~~~
-    ~~~
+    class MyClass extends React.Component {
+      myFunc() {
+        alert('Stop it.  Stop hovering.');
+      }
 
-#### ReactJS Components: Blank
-  *
-    * Example:
+      render() {
+        return (
+          <div onHover={this.myFunc}>
+          </div>
+        );
+      }
+    }
     ~~~
-    ~~~
+      * Notice that the component class has two methods: .myFunc() and .render(). .myFunc() is being used as an event handler. .myFunc() will be called any time that a user hovers over the rendered <div></div>.
 
-#### ReactJS Components: Blank
-  *
-    * Example:
-    ~~~
-    ~~~
-
-#### ReactJS Components: Blank
-  *
-    * Example:
-    ~~~
-    ~~~
-
-#### ReactJS Components: Blank
+#### Components & Advanced JSX: Blank
   *
     * Example:
     ~~~
