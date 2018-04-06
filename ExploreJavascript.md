@@ -2005,7 +2005,63 @@
     ~~~
       * Notice that the component class has two methods: .myFunc() and .render(). .myFunc() is being used as an event handler. .myFunc() will be called any time that a user hovers over the rendered <div></div>.
 
-#### Components & Advanced JSX: Blank
+## Components Interact
+  * A React application can contain dozens, or even hundreds, of components.
+  * Each component might be small and relatively unremarkable on its own. When combined, however, they can form enormous, fantastically complex ecosystems of information.
+  * In other words, React apps are made out of components, but what makes React special isn't components themselves. What makes React special is the ways in which components interact.
+
+#### Components Interact: A Component in a Render Function
+  * Components return JSX, but they can also return other Components
+    * Example:
+    ~~~
+    class OMG extends React.Component {
+      render() {
+        return <h1>Whooaa!</h1>;
+      }
+    }
+
+    class Crazy extends React.Component {
+      render() {
+        return <OMG />;
+      }
+    }
+    ~~~
+
+#### Components Interact: Require A File
+  * When you use React.js, every JavaScript file in your application is invisible to every other JavaScript file by default.
+  * If you want to use a variable that's declared in a different file, such as a NavBar, then you have to import the variable that you want. To import a variable, you can use an import statement:
+    * Example:
+    ~~~
+    import { NavBar } from './NavBar.js';
+    ~~~
+      * If you use an import statement, and the string at the end begins with either a dot or a slash, then import will treat that string as a filepath. import will follow that filepath, and import the file that it finds.
+      * If your filepath doesn't have a file extension, then ".js" is assumed. So the above example could be shortened:
+      ~~~
+      import { NavBar } from './NavBar';
+      ~~~
+      * For more information regarding Modules check out [Modules In-Depth](http://eloquentjavascript.net/10_modules.html)
+      * Full Example:
+      ~~~
+      import React from 'react';
+      import ReactDOM from 'react-dom';
+      import { NavBar } from './NavBar';
+
+
+      class ProfilePage extends React.Component {
+        render() {
+          return (
+            <div>
+      				<NavBar />
+              <h1>All About Me!</h1>
+              <p>I like movies and blah blah blah blah blah</p>
+              <img src="https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-monkeyselfie.jpg" />
+            </div>
+          );
+        }
+      }
+      ~~~
+
+#### Components Interact: Blank
   *
     * Example:
     ~~~
