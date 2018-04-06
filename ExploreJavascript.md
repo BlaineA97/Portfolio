@@ -2199,28 +2199,176 @@
       "Hello"/>, document.getElementById('app'));
 ~~~
 
-#### this.props: Blank
-  *
+#### this.props: Render a Component's props
+  * Usually, you will want to display the props that are passed into a given component.
     * Example:
     ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+
+    class Greeting extends React.Component {
+      render() {
+        return <h1>Hi there, {this.props.firstName}!</h1>;
+      }
+    }
+
+    ReactDOM.render(
+      <Greeting firstName='Blaine' />,
+      document.getElementById('app')
+    );
     ~~~
 
-#### this.props: Blank
-  *
+#### this.props: Pass props From Component To Component
+  * Let's Review:
+    * You have learned how to pass a prop to a component:
+      ~~~
+      <Greeting firstName="Blaine" />
+      ~~~
+    * You have also learned how to access and display a passed-in prop:
+      ~~~
+      render() {
+        return <h1>{this.props.firstName}</h1>;
+      }
+      ~~~
+    * The most common use of props is to pass information to a component, from a different component.
+    * A curmudgeonly clarification about grammar:
+      * You may have noticed some loose usage of the words prop and props. Unfortunately, this is pretty inevitable.
+      * props is the name of the object that stores passed-in information. this.props refers to that storage object. At the same time, each piece of passed-in information is called a prop. This means that props could refer to two pieces of passed-in information, or it could refer to the object that stores those pieces of information :(
     * Example:
     ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    import { Greeting } from './Greeting'
+
+    class App extends React.Component {
+      render() {
+        return (
+          <div>
+            <h1>
+              Hullo and, "Welcome to The Newzz," "On Line!"
+            </h1>
+            <Greeting name="Blaine"/>
+            <article>
+              Latest newzz:  where is my phone?
+            </article>
+          </div>
+        );
+      }
+    }
+
+    ReactDOM.render(
+      <App />,
+      document.getElementById('app')
+    );  
+    ~~~
+    ~~~
+    import React from 'react';
+
+    export class Greeting extends React.Component {
+      render() {
+        return <h1>Hi there, {this.props.name}!</h1>;
+      }
+    }
     ~~~
 
-#### this.props: Blank
-  *
+#### this.props: Render Different UI Based on props
+  * You can do more with props than just display them. You can also use props to make decisions.
     * Example:
     ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+
+    export class Greeting extends React.Component {
+      render() {
+      	if (this.props.signedIn == false) {
+      	  return <h1>GO AWAY</h1>;
+      	} else {
+      	  return <h1>Hi there, {this.props.name}!</h1>;
+      	}
+      }
+    }
+    ~~~
+    ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    import { Greeting } from './Greeting';
+
+    class App extends React.Component {
+      render() {
+        return (
+          <div>
+            <h1>
+              Hullo and, "Welcome to The Newzz," "On Line!"
+            </h1>
+            <Greeting name="Alison" signedIn={true} />
+            <article>
+              Latest:  where is my phone?
+            </article>
+          </div>
+        );
+      }
+    }
+
+    ReactDOM.render(
+      <App />,
+      document.getElementById('app')
+    );
     ~~~
 
-#### this.props: Blank
-  *
-    * Example:
+#### this.props: Put an Event Handler in a Component Class
+  * You can, and often will, pass functions as props. It is especially common to pass event handler functions.
+  * However, you have to define an event handler before you can pass one anywhere.
+  * How do you define an event handler in React?
+    * You define an event handler as a method on the component class, just like the render method. Almost all functions that you define in React will be defined in this way, as methods in a class.
+    * BAD Example:
     ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    import { Button } from './Button';
+
+    function talk () {
+    	let speech = '';
+      for (let i = 0; i < 10000; i++) {
+        speech += 'blah ';
+      }
+      alert(speech);
+    }
+
+    class Talker extends React.Component {
+      render() {
+        return <Button />;
+      }
+    }
+
+    ReactDOM.render(
+      <Talker />,
+      document.getElementById('app')
+    );
+    ~~~
+    * Good Example:
+    ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    import { Button } from './Button';
+
+    class Talker extends React.Component {
+      talk() {
+        let speech;
+        for (let i = 0; i< 10000; i++) {
+          speech =+ 'blah '
+        }
+        alert(speech);
+      }
+
+      render() {
+        return <Button />;
+      }
+    }
+
+    ReactDOM.render(
+      <Talker />,
+      document.getElementById('app')
+    );
     ~~~
 
 #### this.props: Blank
