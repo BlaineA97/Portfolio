@@ -2371,12 +2371,135 @@
     );
     ~~~
 
+#### this.props: Pass an Event Handler as a prop
+  * You can pass a method in the exact same way that you pass any other information.
+  * It doesn't really matter what prop name you choose. prop attributes will work with just about any name, so long as the name follows the [JavaScript variable name rules](https://mathiasbynens.be/notes/javascript-identifiers).
+  * For example, if you're going to pass a function named talk, you might as well use talk as your name.
+    * Example:
+    ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    import { Button } from './Button';
+
+    class Talker extends React.Component {
+      talk() {
+        let speech = '';
+        for (let i = 0; i < 10000; i++) {
+          speech += 'blah ';
+        }
+        alert(speech);
+      }
+
+      render() {
+        return <Button talk={this.talk}/>;
+      }
+    }
+
+    ReactDOM.render(
+      <Talker />,
+      document.getElementById('app')
+    );
+    ~~~
+
+#### this.props: Receive an Event Handler as a prop
+  * We want to allow `<Button />` to use `<Talker />`'s `talk` function.
+  * To do that, we will pass the `talk` function to `<Button />` using JSX attributes like so:
+  ~~~
+  return <Button talk={this.talk}/>;
+  ~~~
+  * Then we will need `<Button />` to use the prop function that it was passed like so:
+  ~~~
+  return (
+    <button onClick={this.props.talk}>
+      Click me!
+    </button>
+  );
+  ~~~
+    * Full Example:
+    ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    import { Button } from './Button';
+
+    class Talker extends React.Component {
+      talk() {
+        let speech = '';
+        for (let i = 0; i < 10000; i++) {
+          speech += 'blah ';
+        }
+        alert(speech);
+      }
+
+      render() {
+        return <Button talk={this.talk}/>;
+      }
+    }
+
+    ReactDOM.render(
+      <Talker />,
+      document.getElementById('app')
+    );
+    ~~~
+    ~~~
+    import React from 'react';
+
+    export class Button extends React.Component {
+      render() {
+        return (
+          <button onClick={this.props.talk}>
+            Click me!
+          </button>
+        );
+      }
+    }
+    ~~~
+
+#### this.props: Naming Conventions (handleEvent, onEvent, and this.props.onEvent)
+  * When you pass an event handler as a prop, there are two names that you have to choose.
+  * Both naming choices occur in the parent component class - that is, in the component class that defines the event handler and passes it.
+    * The first name that you have to choose is the name of the event handler itself (The function you are passing).
+    * The second name that you have to choose is the name of the prop that you will use to pass the event handler. This is the same thing as your attribute name.
+    * Example:
+    ~~~
+    return <Button secondName={this.firstName}/>;
+    ~~~
+    * These two names can be whatever you want. However, there is a naming convention that they often follow. You don't have to follow this convention, but you should understand it when you see it.
+    * Here's how the naming convention works: first, think about what type of event you are listening for. In our example, the event type was "click."
+    * If you are listening for a "click" event, then you name your event handler handleClick. If you are listening for a "keyPress" event, then you name your event handler handleKeyPress:
+    * Example:
+    ~~~
+    class MyClass extends React.Component {
+      handleHover() {
+        alert('I am an event handler.');
+        alert('I will be called in response to "hover" events.');
+      }
+    }
+    ~~~
+    * Your prop name should be the word on, plus your event type. If you are listening for a "click" event, then you name your prop onClick. If you are listening for a "keyPress" event, then you name your prop onKeyPress:
+    * One major source of confusion is the fact that names like onClick have special meaning, but only if they're used on HTML-like elements.
+      * HTML Example:
+      ~~~
+      <button onClick={this.props.onClick}>
+        Click me!
+      </button>
+      ~~~
+      * Non-HTML / Attribute Example:
+      ~~~
+      <Button onClick={this.handleClick} />
+      ~~~
+
 #### this.props: Blank
   *
     * Example:
     ~~~
     ~~~
 
+#### this.props: Blank
+  *
+    * Example:
+    ~~~
+    ~~~
+v
 ## Blank
   *
 
