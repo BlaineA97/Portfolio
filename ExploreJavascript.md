@@ -2061,7 +2061,107 @@
       }
       ~~~
 
-#### Components Interact: Blank
+#### Components Interact: export
+  * When you import a variable from a file that is not the current file, then an import statement isn't quite enough. You also need an export statement, written in the other file, exporting the variable that you hope to grab.
+  * export comes from [ES6's module system ](http://eloquentjavascript.net/10_modules.html), just like import does. export and import are meant to be used together, and you rarely see one without the other.
+  * There are a few different ways to use export. We will be using a style called "named exports."
+  * In one file, place the keyword export immediately before something that you want to export. That something can be any top-level var, let, const, function, or class:
+    * Example:
+    ~~~
+    // Manifestos.js:
+
+    export const faveManifestos = {
+      futurist: 'http://www.artype.de/Sammlung/pdf/russolo_noise.pdf',
+      SCUM:     'http://www.ccs.neu.edu/home/shivers/rants/scum.html',
+      cyborg:   'http://faculty.georgetown.edu/irvinem/theory/Haraway-CyborgManifesto-1.pdf'
+    };
+
+    export const alsoRan = 'TimeCube';
+    ~~~
+    * In a different file, import the name of the var, let, const, function, or class from the first file:
+    ~~~
+    // App.js:
+
+    // Import faveManifestos and alsoRan from ./Manifestos.js:
+    import { faveManifestos, alsoRan } from './Manifestos';
+
+    // Use faveManifestos:
+    console.log(`A Cyborg Manifesto:  ${faveManifestos.cyborg}`);
+    ~~~
+    * This style of importing and exporting in JavaScript is known as "named exports." When you use named exports, you always need to wrap your imported names in curly braces, such as:
+    ~~~
+    import { faveManifestos, alsoRan } from './Manifestos';`
+    ~~~
+    * Class Export Example:
+    ~~~
+    import React from 'react';
+
+    export class NavBar extends React.Component {
+      render() {
+        const pages = ['home', 'blog', 'pics', 'bio', 'art', 'shop', 'about', 'contact'];
+        const navLinks = pages.map(page => {
+          return (
+            <a href={'/' + page}>
+              {page}
+            </a>
+          )
+        });
+
+        return <nav>{navLinks}</nav>;
+      }
+    }
+    ~~~
+
+## this.props
+  * Previously, you learned one way that components can interact: a component can render another component.
+  * Another way that components can interact: a component can pass information to another component.
+  * Information that gets passed from one component to another is known as "props."
+
+#### this.props: Access a Component's props
+  * Every component has something called props.
+  * A component's props is an object. It holds information about that component.
+  * To see a component's props object, you use the expression `this.props`.
+    * Example in a render method:
+    ~~~
+    render() {
+      console.log("Props object comin' up!");
+
+      console.log(this.props);
+
+      console.log("That was my props object!");
+
+      return <h1>Hello world</h1>;
+    }
+    ~~~
+    * Example with entire Component:
+    ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+
+    class PropsDisplayer extends React.Component {
+      render() {
+      	const stringProps = JSON.stringify(this.props);
+
+        return (
+          <div>
+            <h1>CHECK OUT MY PROPS OBJECT</h1>
+            <h2>{stringProps}</h2>
+          </div>
+        );
+      }
+    }
+
+    // ReactDOM.render goes here:
+    ReactDOM.render(<PropsDisplayer />, document.getElementById('app'));
+    ~~~
+
+#### this.props: Blank
+  *
+    * Example:
+    ~~~
+    ~~~
+
+#### this.props: Blank
   *
     * Example:
     ~~~
