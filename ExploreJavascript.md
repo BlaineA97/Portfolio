@@ -2116,6 +2116,17 @@
   * Previously, you learned one way that components can interact: a component can render another component.
   * Another way that components can interact: a component can pass information to another component.
   * Information that gets passed from one component to another is known as "props."
+  * Things that are gone over in this section:
+    * Passing a prop by giving an attribute to a component instance.
+    * Accessing a passed-in prop via this.props.prop-name
+    * Displaying a prop
+    * Using a prop to make decisions about what to display
+    * Defining an event handler in a component class
+    * Passing an event handler as a prop
+    * Receiving a prop event handler and attaching it to an event listener
+    * Naming event handlers and event handler attributes according to convention
+    * this.props.children
+    * getDefaultProps
 
 #### this.props: Access a Component's props
   * Every component has something called props.
@@ -2488,18 +2499,210 @@
       <Button onClick={this.handleClick} />
       ~~~
 
-#### this.props: Blank
+#### this.props: this.props.children
+  * Every component's props object has a property named children.
+  * `this.props.children` will return everything in between a component's opening and closing JSX tags.
+  * So far, all of the components that you've seen have been self-closing tags, such as `<MyComponentClass />`. They don't have to be! You could write `<MyComponentClass></MyComponentClass>`, and it would still work.
+  * `this.props.children` would return everything in between `<MyComponentClass>` and `</MyComponentClass>`.
+    * Look at BigButton.js. In Example 1, `<BigButton>`'s `this.props.children` would equal the text, "I am a child of BigButton."
+    ~~~
+    // Example 1
+    <BigButton>
+      I am a child of BigButton.
+    </BigButton>
+    ~~~
+    * In Example 2, <BigButton>'s this.props.children would equal a <LilButton /> component.
+    ~~~
+    // Example 2
+    <BigButton>
+      <LilButton />
+    </BigButton>
+    ~~~
+    * In Example 3, <BigButton>'s this.props.children would equal undefined.
+    ~~~
+    // Example 3
+    <BigButton />
+    ~~~
+    * If a component has more than one child between its JSX tags, then this.props.children will return those children in an array. However, if a component has only one child, then this.props.children will return the single child, not wrapped in an array.
+  * Full Example:
+  ~~~
+  // Parent Component
+  import React from 'react';
+  import ReactDOM from 'react-dom';
+  import { List } from './List';
+
+  class App extends React.Component {
+    render() {
+      return (
+        <div>
+          <List type='Living Musician'>
+            <li>Sachiko M</li>
+            <li>Harvey Sid Fisher</li>
+          </List>
+          <List type='Living Cat Musician'>
+            <li>Nora the Piano Cat</li>
+          </List>
+        </div>
+      );
+    }
+  }
+
+  ReactDOM.render(
+    <App />,
+    document.getElementById('app')
+  );
+  ~~~
+  * Note in the class `List` that the children are called and displayed because they are present in the parent Component.
+  ~~~
+  import React from 'react';
+
+  export class List extends React.Component {
+    render() {
+      let titleText = `Favorite ${this.props.type}`;
+      if (this.props.children instanceof Array) {
+      	titleText += 's';
+      }
+      return (
+        <div>
+          <h1>{titleText}</h1>
+          <ul>{this.props.children}</ul>
+        </div>
+      );
+    }
+  }
+  ~~~
+
+#### this.props: defaultProps
+  * What if you don't pass props to a child class that has interpolated props? It will display nothing.
+  * It is good practice to provide default values for these props in the event they go unused.
+  * You can make this happen by giving your component class a property named defaultProps:
+    * No Props Passed Example:
+    ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+
+    class Button extends React.Component {
+      render() {
+        return (
+          <button>
+            {this.props.text}
+          </button>
+        );
+      }
+    }
+
+    // defaultProps goes here:
+    Button.defaultProps = { text: 'I am a button' }
+
+    ReactDOM.render(
+      <Button />,
+      document.getElementById('app')
+    );
+    // Output: "I am a Button"
+    ~~~
+    * With Props Passed Example:
+    ~~~
+    import React from 'react';
+      import ReactDOM from 'react-dom';
+
+      class Button extends React.Component {
+        render() {
+          return (
+            <button>
+              {this.props.text}
+            </button>
+          );
+        }
+      }
+
+      // defaultProps goes here:
+      Button.defaultProps = { text: 'I am a button' }
+
+      ReactDOM.render(
+        <Button text="I am Groot" />,
+        document.getElementById('app')
+    );
+    // Output: "I am Groot"
+    ~~~
+
+## this.state
+  * React components will often need dynamic information in order to render. For example, imagine a component that displays the score of a basketball game. The score of the game might change over time, meaning that the score is dynamic. Our component will have to know the score, a piece of dynamic information, in order to render in a useful way.
+  * There are two ways for a component to get dynamic information: props and state. Besides props and state, every value used in a component should always stay exactly the same.
+  * It's time to learn about state. props and state are all that you need to set up an ecosystem of interacting React components.
+
+#### this.state: Setting Initial State
+  * A React component can access dynamic information in two ways: props and state.
+  * Unlike props, a component's state is not passed in from the outside. A component decides its own state.
+  * To make a component have state, give the component a state property. This property should be declared inside of a constructor method, like this:
+    ~~~
+    class Example extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = { mood: 'decent' };
+      }
+
+      render() {
+        return <div></div>;
+      }
+    }
+
+    <Example />
+    ~~~
+  * Let's break this down bit by bit:
+    * this.state should be equal to an object, like in the example above. This object represents the initial "state" of any component instance.
+    * The constructor and super are both features of ES6, not unique to React.
+    * It is important to note that React components always have to call super in their constructors to be set up properly.
+    * Make sure not to separate constructor and render with a comma! Methods should never be comma-separated, if inside of a class body. This is to emphasize the fact that classes and object literals are different.
+
+#### this.state: Access a Component's state
+  * To read a component's state, use the expression this.state.name-of-property:
+    * Example:
+    ~~~
+    class TodayImFeeling extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = { mood: 'decent' };
+      }
+
+      render() {
+        return (
+          <h1>
+            I'm feeling {this.state.mood}!
+          </h1>
+        );
+      }
+    }
+    ~~~
+    * The above component class reads a property in its state from inside of its render function.
+    * Just like this.props, you can use this.state from any property defined inside of a component class's body.
+
+#### this.state: Update state with this.setstate
+  * A component can do more than just read its own state. A component can also change its own state.
+  * A component changes its state by calling the function `this.setState()`.
+  * `this.setState()` takes two arguments: an object that will update the component's state, and a callback. You basically never need the callback.
+    ~~~
+    this.setState({ hungry: true });
+    ~~~
+    * `this.setState()` takes an object, and merges that object with the component's current state. If there are properties in the current state that aren't part of that object, then those properties remain how they were.
+
+#### this.state: Blank
   *
     * Example:
     ~~~
     ~~~
 
-#### this.props: Blank
+#### this.state: Blank
   *
     * Example:
     ~~~
     ~~~
-v
+
+#### this.state: Blank
+  *
+    * Example:
+    ~~~
+    ~~~
+
 ## Blank
   *
 
