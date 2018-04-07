@@ -2709,14 +2709,191 @@
     ~~~
     * Just know that in React, whenever you define an event handler that uses `this`, you need to add `this.methodName = this.methodName.bind(this)` to your constructor function.
 
-## Blank
-  *
+## Stateless Components Inherit From Stateful Components
+  * A React component should use props to store information that can be changed, but can only be changed by a different component.
+  * A React component should use state to store information that the component itself can change.
+    * React uses two components to create a programming pattern: a stateful component, and a stateless component.
+      * "Stateful" describes any component that has a state property;
+      * "Stateless" describes any component that does not.
+    * In this pattern, a stateful component passes its state down to a stateless component.
 
-#### Blank: Blank
+#### Stateless Components Inherit From Stateful Components: Build a Stateful Component Class
+  * A Stateful Component holds states and provides them to its children components.
+    * Example:
+    ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+
+
+    class Parent extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          name: 'Frarthur'
+        }
+      }
+      render() {
+        return(
+          <div>
+
+          </div>
+        )
+      }
+    }
+    ~~~
+
+#### Stateless Components Inherit From Stateful Components: Build a Stateless Component Class
+  * A Stateless Component accepts props from its parent and displays it.
+    * Example:
+    ~~~
+    import React from 'react';
+
+    export class Child extends React.Component {
+      render() {
+        return(
+        <h1>
+    			Hey, my name is {this.props.name}!
+        </h1>
+        )
+      }
+    }
+    ~~~
+
+#### Stateless Components Inherit From Stateful Components: Pass a Component's State
+  * By importing the Child Component into the Parent, we can pass props and display the Child Component by changing only a couple things in the Parent Component.
+    * Example:
+    ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    import { Child } from './Child';
+
+    class Parent extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          name: 'Frarthur'
+        }
+      }
+      render() {
+        return(
+          <Child name={this.state.name} />
+        )
+      }
+    }
+
+    ReactDOM.render(<Parent />,document.getElementById('app'));
+    ~~~
+    * ReactDOM will display the <Parent/> Component, which is displaying the <Child/> Component and passing its state 'name' to be displayed.
+
+## Child Components Update Their Parents' state
+  * In these examples, The stateless, child component will update the state of the parent component. Here's how that works:
+    * Step One
+      * The parent component class defines a method that calls `this.setState()`.
+      * For an example, look in Step One at the `.handleClick()` method.
+        ~~~
+        // Step One
+        import React from 'react';
+        import ReactDOM from 'react-dom';
+        import { ChildClass } from './ChildClass';
+
+        class ParentClass extends React.Component {
+          constructor(props) {
+            super(props);
+
+            this.state = { totalClicks: 0 };
+          }
+
+          handleClick() {
+            const total = this.state.totalClicks;
+
+            // calling handleClick will
+            // result in a state change:
+            this.setState(
+              { totalClicks: total + 1 }
+            );
+          }
+        }
+        ~~~
+    * Step Two
+      * The parent component binds the newly-defined method to the current instance of the component in its constructor. This ensures that when we pass the method to the child component, it will still update the parent component.
+      * For an example, look in Step Two at the end of the `constructor()` method.
+        ~~~
+        // Step Two
+        import React from 'react';
+        import ReactDOM from 'react-dom';
+        import { ChildClass } from './ChildClass';
+
+        class ParentClass extends React.Component {
+          constructor(props) {
+            super(props);
+
+            this.state = { totalClicks: 0 };
+
+            this.handleClick = this.handleClick.bind(this);
+          }
+
+          handleClick() {
+            const total = this.state.totalClicks;
+
+            // calling handleClick will
+            // result in a state change:
+            this.setState(
+              { totalClicks: total + 1 }
+            );
+          }
+
+          // The stateful component class passes down
+          // handleClick to a stateless component class:
+          render() {
+            return (
+              <ChildClass onClick={this.handleClick} />
+            );
+          }
+        }
+        ~~~
+    * Step Three
+      * Once the parent has defined a method that updates its state and bound to it, the parent then passes that method down to a child.
+      * Look in Step Three, at the ChildClass component call:
+        ~~~
+        // Step Three
+        <ChildClass onClick={this.handleClick} />
+        ~~~
+    * Step Four
+      * The child receives the passed-down function, and uses it as an event handler.
+      * Look in Step Four. When a user clicks on the <button></button>, a click event will fire. This will make the passed-down function get called, which will update the parent's state.
+        ~~~
+        import React from 'react';
+        import ReactDOM from 'react-dom';
+
+        export class ChildClass extends React.Component {
+          render() {
+            return (
+              // The stateless component class uses
+              // the passed-down handleClick function,
+              // accessed here as this.props.onClick,
+              // as an event handler:
+              <button onClick={this.props.onClick}>
+                Click Me!
+              </button>
+            );
+          }
+        }
+        ~~~
+
+#### Child Components Update Their Parents' state: Blank
   *
     * Example:
     ~~~
     ~~~
+
+#### Child Components Update Their Parents' state: Blank
+  *
+    * Example:
+    ~~~
+    ~~~
+
+## Blank
+  *
 
 #### Blank: Blank
   *
