@@ -2880,13 +2880,197 @@
         }
         ~~~
 
-#### Child Components Update Their Parents' state: Blank
+#### Child Components Update Their Parents' state: Example
+    ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    import { Child } from './Child';
+
+    class Parent extends React.Component {
+      constructor(props) {
+        super(props);
+
+        this.state = { name: 'Frarthur' };
+
+        this.changeName = this.changeName.bind(this);
+      }
+
+      changeName(newName) {
+        this.setState({
+          name: newName
+        });
+      }
+
+      render() {
+        return <Child name={this.state.name} onChange={this.changeName} />
+      }
+    }
+
+    ReactDOM.render(
+    	<Parent />,
+    	document.getElementById('app')
+    );
+    ~~~
+    ~~~
+    import React from 'react';
+
+    export class Child extends React.Component {
+      constructor(props) {
+        super(props);
+
+        this.handleChange = this.handleChange.bind(this);
+      }
+
+      handleChange(e) {
+        const name = e.target.value;
+        this.props.onChange(name);
+      }
+
+      render() {
+        return (
+          <div>
+            <h1>
+              Hey my name is {this.props.name}!
+            </h1>
+            <select id="great-names" onChange={this.handleChange}>
+              <option value="Frarthur">
+                Frarthur
+              </option>
+
+              <option value="Gromulus">
+                Gromulus
+              </option>
+
+              <option value="Thinkpiece">
+                Thinkpiece
+              </option>
+            </select>
+          </div>
+        );
+      }
+    }
+    ~~~
+
+## Child Components Update Sibling Components
+  * We've learned the first React programming pattern: a stateful, parent component passes down a prop to a stateless, child component.
+  * We've learned that the first React programming pattern is actually part of a larger pattern: a stateful, parent component passes down an event handler to a stateless, child component. The child component then uses that event handler to update its parent's state.
+  * In this section, we will expand the pattern one last time. A child component updates its parent's state, and the parent passes that state to a sibling component.
+
+#### Child Components Update Sibling Components: One Sibling to Display, Another to Change
+  * One of the very first things that you learned about components is that they should only have one job.
+
+  * In the last section, <Child/> had two jobs:
+    * 1 - <Child/> displayed a name.
+    * 2 - <Child/> offered a way to change that name.
+    * You should make like Solomon and divide <Child/> in two: one component for displaying the name, and a different component for allowing a user to change the name.
+
+  * Full Example:
+    ~~~
+    // Parent (Passes Props to children & provides functions to change states)
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    import { Child } from './Child';
+    import { Sibling } from './Sibling';
+
+    class Parent extends React.Component {
+      constructor(props) {
+        super(props);
+
+        this.state = { name: 'Frarthur' };
+
+        this.changeName = this.changeName.bind(this);
+      }
+
+      changeName(newName) {
+        this.setState({
+          name: newName
+        });
+      }
+
+      render() {
+        return (
+          <div>
+            <Child onChange={this.changeName} />
+            <Sibling name={this.state.name} />
+          </div>
+        );
+      }
+    });
+
+    ReactDOM.render(
+      <Parent />,
+      document.getElementById('app')
+    );
+    ~~~
+    ~~~
+    // Child (Allows user input to alter information, passing new information up to Parent using functions passed in props from Parent)
+    import React from 'react';
+
+    export class Child extends React.Component {
+      constructor(props) {
+        super(props);
+
+        this.handleChange = this.handleChange.bind(this);
+      }
+
+      handleChange(e) {
+        const name = e.target.value;
+        this.props.onChange(name);
+      }
+
+      render() {
+        return (
+          <div>
+            <select
+              id="great-names"
+              onChange={this.handleChange}>
+
+              <option value="Frarthur">Frarthur</option>
+              <option value="Gromulus">Gromulus</option>
+              <option value="Thinkpiece">Thinkpiece</option>
+            </select>
+          </div>
+        );
+      }
+    }
+    ~~~
+    ~~~
+    // Sibling (Displays the current states provided in props by Parent)
+    import React from 'react';
+
+    export class Sibling extends React.Component {
+      render() {
+        const name = this.props.name;
+        return (
+          <div>
+            <h1>Hey, my name is {name}!</h1>
+            <h2>Don't you think {name} is the prettiest name ever?</h2>
+            <h2>Sure am glad that my parents picked {name}!</h2>
+          </div>
+        );
+      }
+    }
+    ~~~
+    * Let's review. Follow each step in the code editor:
+      * A stateful component class defines a function that calls this.setState. (Parent, lines 15-19)
+      * The stateful component passes that function down to a stateless component. (Parent, line 24)
+      * That stateless component class defines a function that calls the passed-down function, and that can take an event object as an argument. (Child, lines 10-13)
+      * The stateless component class uses this new function as an event handler. (Child, line 20)
+      * When an event is detected, the parent's state updates. (A user selects a new dropdown menu item)
+      * The stateful component class passes down its state, distinct from the ability to change its state, to a different stateless component. (Parent, line 25)
+      * That stateless component class receives the state and displays it. (Sibling, lines 5-10)
+      * An instance of the stateful component class is rendered. One stateless child component displays the state, and a different stateless child component displays a way to change the (Parent, lines 23-26)
+
+## Blank
+  *
+
+#### Blank: Blank
   *
     * Example:
     ~~~
     ~~~
 
-#### Child Components Update Their Parents' state: Blank
+#### Blank: Blank
   *
     * Example:
     ~~~
