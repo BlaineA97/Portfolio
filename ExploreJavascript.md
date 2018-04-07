@@ -2685,23 +2685,29 @@
     ~~~
     * `this.setState()` takes an object, and merges that object with the component's current state. If there are properties in the current state that aren't part of that object, then those properties remain how they were.
 
-#### this.state: Blank
-  *
-    * Example:
+#### this.state: Call this.setState from Another Function
+  * The most common way to call `this.setState()` is to call a custom function that wraps a `this.setState()` call. `.makeSomeFog()` is an example:
     ~~~
-    ~~~
+    class Example extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = { weather: 'sunny' };
+        this.makeSomeFog = this.makeSomeFog.bind(this);
+      }
 
-#### this.state: Blank
-  *
-    * Example:
+      makeSomeFog() {
+        this.setState({
+          weather: 'foggy'
+        });
+      }
+    }
     ~~~
+    * Notice how the method makeSomeFog() contains a call to this.setState().
+    * There is another line that is worth going over:
     ~~~
-
-#### this.state: Blank
-  *
-    * Example:
+    this.makeSomeFog = this.makeSomeFog.bind(this);
     ~~~
-    ~~~
+    * Just know that in React, whenever you define an event handler that uses `this`, you need to add `this.methodName = this.methodName.bind(this)` to your constructor function.
 
 ## Blank
   *
