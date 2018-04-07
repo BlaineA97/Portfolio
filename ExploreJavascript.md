@@ -3061,16 +3061,107 @@
       * That stateless component class receives the state and displays it. (Sibling, lines 5-10)
       * An instance of the stateful component class is rendered. One stateless child component displays the state, and a different stateless child component displays a way to change the (Parent, lines 23-26)
 
-## Blank
+## Advanced React Techniques
   *
 
-#### Blank: Blank
+#### Advanced React Techniques: Inline Styles
+  * There are many different ways to use styles in React. This lesson is focused on one of them: inline styles.
+  * An inline style is a style that's written as an attribute, like this:
+    ~~~
+    <h1 style={{ color: 'red' }}>Hello world</h1>
+    ~~~
+      * Notice the double curly braces. What are those for?
+      * The outer curly braces inject JavaScript into JSX. They say, "everything between us should be read as JavaScript, not JSX."
+      * The inner curly braces create a JavaScript object literal. They make this a valid JavaScript object:
+      ~~~
+      { color: 'red' }
+      ~~~
+      * If you inject an object literal into JSX, and your entire injection is only that object literal, then you will end up with double curly braces. There's nothing unusual about how they work, but they look funny and can be confusing.
+    * Full Example:
+    ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+
+    const styleMe = <h1 style={{ background: 'lightblue', color: 'darkred' }}>Please style me! I am so bland!</h1>;
+
+    ReactDOM.render(
+    	styleMe,
+    	document.getElementById('app')
+    );
+    ~~~
+
+#### Advanced React Techniques: Make A Style Object Variable
+  * That's all that you need to apply basic styles in React! Simple and straightforward.
+  * One problem with this approach is that it becomes obnoxious if you want to use more than just a few styles. An alternative that's often nicer is to store a style object in a variable, and then inject that variable into JSX.
+  * Look in the code editor for an example. The style object is defined on lines 3-6, and then injected on line 11.
+  * If you aren't used to using modules, then this code may have made you twitch uncontrollably:
+    ~~~
+    const style = {
+      color: 'darkcyan',
+      background: 'mintcream'
+    };
+    ~~~
+  * Defining a variable named style in the top-level scope would be an extremely bad idea in many JavaScript environments! In React, however, it's totally fine.
+  * Remember that every file is invisible to every other file, except for what you choose to expose via module.exports. You could have 100 different files, all with global variables named style, and there could be no conflicts.
+  * Full Example:
+    ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    const styles = {
+      background: 'lightblue',
+      color:			'darkred'
+    }
+
+    const styleMe = <h1 style={styles}>Please style me! I am so bland!</h1>;
+
+    ReactDOM.render(
+    	styleMe,
+    	document.getElementById('app')
+    );
+    ~~~
+
+#### Advanced React Techniques: Style Name Syntax
+  * In regular JavaScript, style names are written in hyphenated-lowercase:
+    ~~~
+    const styles = {
+      'margin-top':       "20px",
+      'background-color': "green"
+    };
+    ~~~
+  * In React, those same names are instead written in camelCase:
+    ~~~
+    const styles = {
+      marginTop:       "20px",
+      backgroundColor: "green"
+    };
+    ~~~
+  * This has zero effect on style property values, only on style property names.
+  * Full Example:
+    ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    const styles = {
+      background: 'lightblue',
+      color:			'darkred',
+      marginTop: '100px',
+      fontSize: '50px'
+    }
+
+    const styleMe = <h1 style={styles}>Please style me! I am so bland!</h1>;
+
+    ReactDOM.render(
+    	styleMe,
+    	document.getElementById('app')
+    );
+    ~~~
+
+#### Advanced React Techniques: Blank
   *
     * Example:
     ~~~
     ~~~
 
-#### Blank: Blank
+#### Advanced React Techniques: Blank
   *
     * Example:
     ~~~
