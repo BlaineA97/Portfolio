@@ -3162,7 +3162,9 @@
   * Following this pattern separates your business logic from your presentational logic, which is a Good Thing.
 
 ## Stateless Functional Components
-  * Notice that its instructions object in this example only has one property: `render()`.
+  * Stateless Functional Components only have one property: `render()`.
+
+#### Stateless Functional Components: Explained
   ~~~
   import React from 'react';
 
@@ -3210,23 +3212,153 @@
   }
   ~~~
 
-## Blank
-  *
+#### Stateless Functional Components: Stateless Functional Components and Props
+  * Stateless functional components usually have props passed to them.
+  * To access these props, give your stateless functional component a parameter. This parameter will automatically be equal to the component's props object.
+  * It's customary to name this parameter props. Read Example.js to see how it works.
+  ~~~
+  // Normal way to display a prop:
+  export class MyComponentClass extends React.Component {
+    render() {
+      return <h1>{this.props.title}</h1>;
+    }
+  }
 
-#### Blank: Blank
-  *
+  // Stateless functional component way to display a prop:
+  export const MyComponentClass = (props) => {
+    return <h1>{props.title}</h1>;
+  }
+
+  // Normal way to display a prop using a variable:
+  export class MyComponentClass extends React.component {
+    render() {
+    	let title = this.props.title;
+      return <h1>{title}</h1>;
+    }
+  }
+
+  // Stateless functional component way to display a prop using a variable:
+  export const MyComponentClass = (props) => {
+  	let title = props.title;
+    return <h1>{title}</h1>;
+  }
+  ~~~
+  * Not only are stateless functional components more concise, but they will subtly influence how you think about components in a positive way. They emphasize the fact that components are basically functions! A component takes two optional inputs, props and state, and outputs HTML and/or other components.
     * Example:
     ~~~
     ~~~
 
-#### Blank: Blank
-  *
-    * Example:
+## propTypes
+  * propTypes are useful for two reasons. The first reason is prop validation.
+    * Validation can ensure that your props are doing what they're supposed to be doing. If props are missing, or if they're present but they aren't what you're expecting, then a warning will print in the console.
+  * This is useful, but reason #2 is arguably more useful: documentation.
+    * Documenting props makes it easier to glance at a file and quickly understand the component class inside. When you have a lot of files, and you will, this can be a huge benefit.
+
+#### propTypes: Apply PropTypes
+  * Take a look at MessageDisplayer's render function.
     ~~~
+    import React from 'react';
+
+    export class MessageDisplayer extends React.Component {
+      render() {
+        return <h1>{this.props.message}</h1>;
+      }
+    }
+
+    // This propTypes object should have
+    // one property for each expected prop:
+    MessageDisplayer.propTypes = {
+      message: React.PropTypes.string
+    };
+    ~~~
+    * Notice the expression this.props.message. From this expression, you can deduce that MessageDisplayer expects to get passed a prop named message. Somewhere, at some time, this code is expected to execute:
+    ~~~
+    <MessageDisplayer message="something" />
+    ~~~
+    * If a component class expects a prop, then you can give that component class a propType!
+      * The first step to making a propType is to search for a property named propTypes on the instructions object. If there isn't one, make one! You will have to declare it after the close of your component declaration, since this it will be a static property.
+      * See the example below of a propTypes property. Notice that the value of propTypes is an object, not a function!
+      ~~~
+      // This propTypes object should have
+      // one property for each expected prop:
+      MessageDisplayer.propTypes = {
+        message: React.PropTypes.string
+      };
+      ~~~
+      * The second step is to add a property to the propTypes object. For each prop that your component class expects to receive, there can be one property on your propTypes object.
+      * MessageDisplayer only expects one prop: message. Therefore, its propTypes object only has one property.
+
+#### propTypes: Add Properties to PropTypes
+  * In the code editor, look at the property on MessageDisplayer's propTypes object:
+  ~~~
+  message: React.PropTypes.string
+  ~~~
+  * What are the properties on propTypes supposed to be, exactly?
+    * The name of each property in propTypes should be the name of an expected prop. In our case, MessageDisplayer expects a prop named message, so our property's name is message.
+    * The value of each property in propTypes should fit this pattern:
+      ~~~
+      React.PropTypes.expected-data-type-goes-here
+      ~~~
+      * Since message is presumably going to be a string, we chose React.PropTypes.string. You can see this on line 12. Notice the difference in capitalization between the propTypes object and React.PropTypes!
+    * Each property on the propTypes object is called a propType.
+    * The example below has six propTypes! Look at each one. Note that bool and func are abbreviated, but all other datatypes are spelled normally.
+    ~~~
+    Runner.propTypes = {
+      message:   React.PropTypes.string.isRequired,
+      style:     React.PropTypes.object.isRequired,
+      isMetric:  React.PropTypes.bool.isRequired,
+      miles:     React.PropTypes.number.isRequired,
+      milesToKM: React.PropTypes.func.isRequired,
+      races:     React.PropTypes.array.isRequired
+    };
+    ~~~
+    * If you add .isRequired to a propType, then you will get a console warning if that prop isn't sent.
+
+#### propTypes: PropTypes in Stateless Functional Components
+  * To write propTypes for a stateless functional component, you define a propTypes object as a property of the stateless functional component itself.
+    ~~~
+    const Example = (props) => {
+      return <h1>{props.message}</h1>;
+    }
+
+    Example.propTypes = {
+      message: React.PropTypes.string.isRequired
+    };
+    ~~~
+  * Prop Display Review:
+    ~~~
+    // Normal way to display a prop:
+    export class MyComponentClass extends React.Component {
+      render() {
+        return <h1>{this.props.title}</h1>;
+      }
+    }
+
+    // Stateless functional component way to display a prop:
+    export const MyComponentClass = (props) => {
+      return <h1>{props.title}</h1>;
+    }
+
+    // Normal way to display a prop using a variable:
+    export class MyComponentClass extends React.component {
+      render() {
+      	let title = this.props.title;
+        return <h1>{title}</h1>;
+      }
+    }
+
+    // Stateless functional component way to display a prop using a variable:
+    export const MyComponentClass = (props) => {
+    	let title = props.title;
+      return <h1>{title}</h1>;
+    }
     ~~~
 
-## Blank
-  *
+## React Forms
+  * Think about how forms work in a typical, non-React environment. A user types some data into a form's input fields, and the server doesn't know about it. The server remains clueless until the user hits a "submit" button, which sends all of the form's data over to the server simultaneously.
+  * In React, as in many other JavaScript environments, this is not the best way of doing things.
+  * The problem is the period of time during which a form thinks that a user has typed one thing, but the server thinks that the user has typed a different thing. What if, during that time, a third part of the website needs to know what a user has typed? It could ask the form or the server and get two different answers. In a complex JavaScript app with many moving, interdependent parts, this kind of conflict can easily lead to problems.
+  * In a React form, you want the server to know about every new character or deletion, as soon as it happens. That way, your screen will always be in sync with the rest of your application.
 
 #### Blank: Blank
   *
