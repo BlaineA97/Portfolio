@@ -3155,13 +3155,101 @@
     );
     ~~~
 
-#### Advanced React Techniques: Blank
+## Separate Container Components From Presentational Components: Explanation
+  * Separating container components from presentational components is a popular React programming pattern.
+  * Here's the basic idea behind it: if a component has to have state, make calculations based on props, or manage any other complex logic, then that component shouldn't also have to render HTML-like JSX.
+  * Instead of rendering HTML-like JSX, the component should render another component. It should be that component's job to render HTML-like JSX.
+  * Following this pattern separates your business logic from your presentational logic, which is a Good Thing.
+
+## Stateless Functional Components
+  * Notice that its instructions object in this example only has one property: `render()`.
+  ~~~
+  import React from 'react';
+
+  export class GuineaPigs extends React.Component {
+    render() {
+      let src = this.props.src;
+      return (
+        <div>
+          <h1>Cute Guinea Pigs</h1>
+          <img src={src} />
+        </div>
+      );
+    }
+  }
+  ~~~
+    * When you separate a container component from a presentational component, the presentational component will always end up like this: one `render()` function, and no other properties.
+    * If you have a component class with nothing but a render function, then you can rewrite that component class in a very different way. Instead of using React.Component, you can write it as JavaScript function!
+    * A component class written as a function is called a stateless functional component. Stateless functional components have some advantages over typical component classes.
+  ~~~
+  // A component class written in the usual way:
+  export class MyComponentClass extends React.Component {
+    render() {
+      return <h1>Hello world</h1>;
+    }
+  }
+
+  // The same component class, written as a stateless functional component:
+  export const MyComponentClass = () => {
+    return <h1>Hello world</h1>;
+  }
+
+  // Works the same either way:
+  ReactDOM.render(
+  	<MyComponentClass />,
+  	document.getElementById('app')
+  );
+  ~~~
+  * A Stateless Functional Component should end up looking like this:
+  ~~~
+  import React from 'react';
+
+  export const Friend = () => {
+  		return <img src='https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-octopus.jpg' />;
+  	}  
+  }
+  ~~~
+
+## Blank
+  *
+
+#### Blank: Blank
   *
     * Example:
     ~~~
     ~~~
 
-#### Advanced React Techniques: Blank
+#### Blank: Blank
+  *
+    * Example:
+    ~~~
+    ~~~
+
+## Blank
+  *
+
+#### Blank: Blank
+  *
+    * Example:
+    ~~~
+    ~~~
+
+#### Blank: Blank
+  *
+    * Example:
+    ~~~
+    ~~~
+
+## Blank
+  *
+
+#### Blank: Blank
+  *
+    * Example:
+    ~~~
+    ~~~
+
+#### Blank: Blank
   *
     * Example:
     ~~~
