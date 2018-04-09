@@ -3455,32 +3455,427 @@
   * In React, when you give an <input /> a value attribute, then something strange happens: the <input /> BECOMES controlled. It stops using its internal storage. This is a more 'React' way of doing things.
   * You can find more information about controlled and uncontrolled components in the [React Forms documentation](https://reactjs.org/docs/forms.html).
 
-#### React Forms: Blank
-  *
-    * Example:
+## Mounting Lifecycle Method
+  * What's a Lifecycle Method?
+    * Lifecycle methods are methods that get called at certain moments in a component's life.
+      * You can write a lifecycle method that gets called right before a component renders for the first time.
+      * You can write a lifecycle method that gets called right after a component renders, every time except for the first time.
+      * You can attach lifecycle methods to a lot of different moments in a component's life. This has powerful implications!
+
+#### Mounting Lifecycle Method: Mounting Lifecycle Methods
+  * There are three categories of lifecycle methods: mounting, updating, and unmounting. This section covers the first category: mounting lifecycle methods.
+  * A component "mounts" when it renders for the first time. This is when mounting lifecycle methods get called.
+  * There are three mounting lifecycle methods:
+    * componentWillMount
+    * render
+    * componentDidMount
+  * When a component mounts, it automatically calls these three methods, in order.
+
+#### Mounting Lifecycle Method: `componentWillMount`
+  * When a component renders for the first time, componentWillMount gets called right before render.
+  * In this example the alert "AND NOW, FOR THE FIRST TIME EVER...  FLASHY!!!!" is only rendered on the first time the page is rendered. All subsequent renders will only do the normal render.
     ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+
+    export class Flashy extends React.Component {
+
+      componentWillMount() {
+      	alert('AND NOW, FOR THE FIRST TIME EVER...  FLASHY!!!!');    
+      }
+      render() {
+
+        alert('Flashy is rendering!');
+
+        return (
+          <h1 style={{ color: this.props.color }}>
+            OOH LA LA LOOK AT ME I AM THE FLASHIEST
+          </h1>
+        );
+      }
+    }
+
+    ReactDOM.render(
+      <Flashy color='red' />,
+      document.getElementById('app')
+    );
+
+    setTimeout(() => {
+      ReactDOM.render(
+        <Flashy color='green' />,
+        document.getElementById('app')
+      );
+    }, 2000);
+
     ~~~
 
-#### React Forms: Blank
-  *
-    * Example:
+#### Mounting Lifecycle Method: `render`
+  * `render` belongs to two categories: mounting lifecycle methods, and updating lifecycle methods.
+  * This will be covered in more depth in the next section.
+
+#### Mounting Lifecycle Method: `componentDidMount`
+  * When a component renders for the first time, `componentDidMount` gets called right after the HTML from `render` has finished loading. Look in the code editor for an example of `componentDidMount`.
+  * If your React app uses AJAX to fetch initial data from an API, then `componentDidMount` is the place to make that AJAX call.
+    * More generally, `componentDidMount` is a good place to connect a React app to external applications, such as web APIs or JavaScript frameworks.
+    * `componentDidMount` is also the place to set timers using `setTimeout` or `setInterval`.
     ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+
+    export class Flashy extends React.Component {
+      componentWillMount() {
+        alert('AND NOW, FOR THE FIRST TIME EVER...  FLASHY!!!!');
+      }
+
+      componentDidMount() {
+        alert('YOU JUST WITNESSED THE DEBUT OF...  FLASHY!!!!!!!');
+      }
+
+      render() {
+
+        alert('Flashy is rendering!');
+
+
+        return (
+          <h1 style={{ color: this.props.color }}>
+            OOH LA LA LOOK AT ME I AM THE FLASHIEST
+          </h1>
+        );
+      }
+    }
+
+    ReactDOM.render(
+      <Flashy color='red' />,
+      document.getElementById('app')
+    );
+
+    setTimeout(() => {
+      ReactDOM.render(
+        <Flashy color='green' />,
+        document.getElementById('app')
+      );
+    }, 2000);
     ~~~
 
-## Blank
-  *
+## Updating Lifecycle Method
+  * There are two categories that we haven't yet discussed: updating and unmounting lifecycle methods. This lesson covers both.
+  * What is updating?
+  * The first time that a component instance renders, it does not update. A component updates every time that it renders, starting with the second render.
+  * There are five updating lifecycle methods:
+  * componentWillReceiveProps
+    * shouldComponentUpdate
+    * componentWillUpdate
+    * render
+    * componentDidUpdate
+  * Whenever a component instance updates, it automatically calls all five of these methods, in order.
 
-#### Blank: Blank
-  *
+#### Updating Lifecycle Method: `componentWillReceiveProps`
+  * When a component instance updates, componentWillReceiveProps gets called before the rendering begins.
+  * As one might expect, componentWillReceiveProps only gets called if the component will receive props:
+    ~~~
+    // componentWillReceiveProps will get called here:
+    ReactDOM.render(
+      <Example prop="myVal" />,
+      document.getElementById('app')
+    );
+
+    // componentWillReceiveProps will NOT get called here:
+    ReactDOM.render(
+      <Example />,
+      document.getElementById('app')
+    );
+    ~~~
+  * `componentWillReceiveProps` automatically gets passed one argument: an object called `nextProps`. `nextProps` is a preview of the upcoming props object that the component is about to receive.
+  * In this example, `nextProps.text` will evaluate to "Hello world".
+  ~~~
+  import React from 'react';
+
+  export class Example extends React.Component {
+    componentWillReceiveProps(nextProps) {
+      alert("Check out the new props.text that "
+      	+ "I'm about to get:  " + nextProps.text);
+    }
+
+    render() {
+      return <h1>{this.props.text}</h1>;
+    }
+  }
+
+
+  // The first render won't trigger
+  // componentWillReceiveProps:
+  ReactDOM.render(
+  	<Example text="Hello world" />,
+  	document.getElementById('app')
+  );
+
+  // After the first render,
+  // subsequent renders will trigger
+  // componentWillReceiveProps:
+  setTimeout(() => {
+  	ReactDOM.render(
+  		<Example text="Hello world" />,
+  		document.getElementById('app')
+  	);
+  }, 1000);
+  ~~~
+
+#### Updating Lifecycle Method: `shouldComponentUpdate`
+  * When a component updates, `shouldComponentUpdate` gets called after `componentWillReceiveProps`, but still before the rendering begins.
+  * The best way to use shouldComponentUpdate is to have it return false only under certain conditions. If those conditions are met, then your component will not update.
+  * shouldComponentUpdate automatically receives two arguments: nextProps and nextState. It's typical to compare nextProps and nextState to the current this.props and this.state, and use the results to decide what to do.
     * Example:
     ~~~
+    import React from 'react';
+
+    export class Example extends React.Component {
+      constructor(props) {
+        super(props);
+
+        this.state = { subtext: 'Put me in an <h2> please.' };
+      }
+
+      shouldComponentUpdate(nextProps, nextState) {
+        if ((this.props.text == nextProps.text) &&
+          (this.state.subtext == nextState.subtext)) {
+          alert("Props and state haven't changed, so I'm not gonna update!");
+          return false;
+        } else {
+          alert("Okay fine I will update.")
+          return true;
+        }
+      }
+
+      render() {
+        return (
+          <div>
+            <h1>{this.props.text}</h1>
+            <h2>{this.state.subtext}</h2>
+          </div>
+        );
+      }
+    }
     ~~~
 
-#### Blank: Blank
-  *
+#### Updating Lifecycle Method: `componentWillUpdate`
+  * `componentWillUpdate` gets called in between `shouldComponentUpdate` and render.
+  * `componentWillUpdate` receives two arguments: `nextProps` and `nextState`
+    ~~~
+    import React from 'react';
+
+    export class Example extends React.Component {
+      componentWillUpdate(nextProps, nextState) {
+        alert('Component is about to update!  Any second now!');
+      }
+
+      render() {
+        return <h1>Hello world</h1>;
+      }
+    }
+    ~~~
+    * You cannot call `this.setState` from the body of `componentWillUpdate`! Which begs the question, why would you use it?
+    * The main purpose of `componentWillUpdate` is to interact with things outside of the React architecture. If you need to do non-React setup before a component renders, such as checking the window size or interacting with an API, then `componentWillUpdate` is a good place to do that.
+    * Full Example:
+    ~~~
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    const yellow = 'rgb(255, 215, 18)';
+
+    export class TopNumber extends React.Component {
+      constructor(props) {
+        super(props);
+
+        this.state = { 'highest': 0 };
+      }
+
+      componentWillReceiveProps(nextProps) {
+        if (nextProps.number > this.state.highest) {
+          this.setState({
+            highest: nextProps.number
+          });
+        }
+      }
+
+      componentWillUpdate(nextProps, nextState) {
+        if (document.body.style.background != yellow
+          && this.state.highest >= 950*1000) {
+          document.body.style.background = yellow;
+        } else if (!this.props.game
+          && nextProps.game) {
+          document.body.style.background = 'white';
+        }
+      }
+
+      render() {
+        return (
+          <h1>
+            Top Number: {this.state.highest}
+          </h1>
+        );
+      }
+    }
+
+    TopNumber.propTypes = {
+      number: React.PropTypes.number,
+      game: React.PropTypes.bool
+    };
+    ~~~
+
+#### Updating Lifecycle Method: `componentDidUpdate`
+  * When a component instance updates, `componentDidUpdate` gets called after any rendered HTML has finished loading.
     * Example:
     ~~~
+    import React from 'react';
+
+    export class Example extends React.component {
+      componentDidUpdate(prevProps, prevState) {
+        alert('Component is done rendering!');
+      }
+
+      render() {
+        return <h1>Hello world</h1>;
+      }
+    }
     ~~~
+    * In the above example `componentDidUpdate` automatically gets passed two arguments: `prevProps` and `prevState`. `prevProps` and `prevState` are references to the component's props and state before the current updating period began. You can compare them to the current props and state.
+    * `componentDidUpdate` is usually used for interacting with things outside of the React environment, like the browser or APIs. It's similar to `componentWillUpdate` in that way, except that it gets called **after** render instead of before.
+    * Full Example:
+      ~~~
+      import React from 'react';
+      import ReactDOM from 'react-dom';
+      import { TopNumber } from './TopNumber';
+      import { Display } from './Display';
+      import { Target } from './Target';
+      import { random, clone } from './helpers';
+
+      const fieldStyle = {
+        position: 'absolute',
+        width: 250,
+        bottom: 60,
+        left: 10,
+        height: '60%',
+      };
+
+      class App extends React.Component {
+        constructor(props) {
+          super(props);
+
+          this.state = {
+            game: false,
+            targets: {},
+            latestClick: 0
+          };
+
+          this.intervals = null;
+
+          this.hitTarget = this.hitTarget.bind(this);
+          this.startGame = this.startGame.bind(this);
+          this.endGame = this.endGame.bind(this);
+        }
+
+        createTarget(key, ms) {
+          ms = ms || random(500, 2000);
+          this.intervals.push(setInterval(function(){
+            let targets = clone(this.state.targets);
+            let num = random(1, 1000*1000);
+            targets[key] = targets[key] != 0 ? 0 : num;
+            this.setState({ targets: targets });
+          }.bind(this), ms));
+        }
+
+        hitTarget(e) {
+          if (e.target.className != 'target') return;
+          let num = parseInt(e.target.innerText);
+          for (let target in this.state.targets) {
+            let key = Math.random().toFixed(4);
+            this.createTarget(key);
+          }
+          this.setState({ latestClick: num });
+        }
+
+        startGame() {
+          this.createTarget('first', 750);
+          this.setState({
+            game: true
+          });
+        }
+
+        endGame() {
+          this.intervals.forEach((int) => {
+            clearInterval(int);
+          });
+          this.intervals = [];
+          this.setState({
+            game: false,
+            targets: {},
+            latestClick: 0
+          });
+        }
+
+        componentDidUpdate(prevProps, prevState) {
+          if (this.state.latestClick < prevState.latestClick) {
+            this.endGame();
+          }
+        }
+
+        componentWillMount() {
+          this.intervals = [];
+        }
+
+        render() {
+          let buttonStyle = {
+            display: this.state.game ? 'none' : 'inline-block'
+          };
+          let targets = [];
+          for (let key in this.state.targets) {
+            targets.push(
+              <Target
+                number={this.state.targets[key]}
+                key={key} />
+            );
+          }
+          return (
+            <div>
+              <TopNumber number={this.state.latestClick} game={this.state.game} />
+              <Display number={this.state.latestClick} />
+              <button onClick={this.startGame} style={buttonStyle}>
+                New Game
+              </button>
+              <div style={fieldStyle} onClick={this.hitTarget}>
+                {targets}
+              </div>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(
+        <App />,
+        document.getElementById('app')
+      );
+      ~~~
+
+#### Updating Lifecycle Method: componentWillUnmount
+  * A component's unmounting period occurs when the component is removed from the DOM. This could happen if the DOM is rerendered without the component, or if the user navigates to a different website or closes their web browser.
+  * `componentWillUnmount` is the only unmounting lifecycle method!
+  * `componentWillUnmount` gets called right before a component is removed from the DOM. If a component initiates any methods that require cleanup, then `componentWillUnmount` is where you should put that cleanup.
+    * Example:
+    ~~~
+    import React from 'react';
+
+    export class Example extends React.Component {
+      componentWillUnmount() {
+        alert('Goodbye world');
+      }
+
+      render() {
+        return <h1>Hello world</h1>;
+      }
+    }
+    ~~~
+
+## Creating a React App
+  * [create-react-app Codecademy Guide](https://www.codecademy.com/articles/how-to-create-a-react-app)
 
 ## Blank
   *
