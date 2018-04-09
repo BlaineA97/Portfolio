@@ -2208,7 +2208,7 @@
       // ReactDOM.render goes here:
       ReactDOM.render(<PropsDisplayer myProp=
       "Hello"/>, document.getElementById('app'));
-~~~
+      ~~~
 
 #### this.props: Render a Component's props
   * Usually, you will want to display the props that are passed into a given component.
