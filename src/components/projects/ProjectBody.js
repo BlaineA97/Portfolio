@@ -6,7 +6,7 @@ import Footer from '../Footer';
 class ProjectBody extends Component {
   render() {
     return (
-      <div id="ProjectBody">
+      <div id="ProjectBody" id="ProjectBody-background">
         <div id="ProjectBody-Navigation"><Navigation /></div>
 
         <div id="ProjectBody-wrapper">

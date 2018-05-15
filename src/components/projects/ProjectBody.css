@@ -7,3 +7,6 @@
 #ProjectBody-wrapper {
   min-height: 100vh; /* Allows the footer to exist in the proper place */
 }
+#ProjectBody-background {
+  background: linear-gradient(to right, gray,darkgray,white,darkgray,gray);
+}
