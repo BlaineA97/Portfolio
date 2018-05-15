@@ -4,6 +4,11 @@ import logo from '../logo.svg';
 import { Link } from 'react-router-dom';
 
 class Navigation extends Component {
+
+  redirectRPG() {
+    window.open("https://serene-inlet-45614.herokuapp.com/","_self")
+  }
+
   render() {
     return (
       <div id="Navigation-wrapper">
@@ -23,7 +28,7 @@ class Navigation extends Component {
           <Link to="/projects" className="Navigation-menu-link">
             Projects
           </Link>
-          <Link to="/rpg" className="Navigation-menu-link">
+          <Link to="" className="Navigation-menu-link" onClick={this.redirectRPG}>
             <p>Rpg</p>
           </Link>
           <Link to="/hobbies" className="Navigation-menu-link">
