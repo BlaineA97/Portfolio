@@ -1,6 +1,23 @@
 import React, { Component } from 'react';
 import './ProjectList.css';
 import PortfolioScreenShot from '../../images/PortfolioScreenShot.png'
+import TechImageCSS from './technologies/css.svg'
+import TechImageGit from './technologies/git.svg'
+import TechImageHeroku from './technologies/heroku.svg'
+import TechImageHtml5 from './technologies/html5.svg'
+import TechImageJavascript from './technologies/javascript.svg'
+import TechImageMongoDB from './technologies/mongodb.svg'
+import TechImageNode from './technologies/node.svg'
+import TechImageNPM from './technologies/npm.svg'
+import TechImagePostgresql from './technologies/postgresql.svg'
+import TechImageRails from './technologies/rails.svg'
+import TechImageReact from './technologies/react.svg'
+import TechImageRuby from './technologies/ruby.svg'
+import TechImageSass from './technologies/sass.svg'
+import TechImageSlack from './technologies/slack.svg'
+import TechImageTravis from './technologies/travis.svg'
+import TechImageTrello from './technologies/trello.svg'
+import TechImageYarn from './technologies/yarn.svg'
 
 class ProjectList extends Component {
   constructor(props) {
@@ -28,10 +45,10 @@ class ProjectList extends Component {
             </p>
             <div className="ProjectTechnologies">
               {/* Insert Tech Classes Later */}
-              <img src={PortfolioScreenShot} alt="TechImage" className="TechImages"/>
-              <img src={PortfolioScreenShot} alt="TechImage" className="TechImages"/>
-              <img src={PortfolioScreenShot} alt="TechImage" className="TechImages"/>
-              <img src={PortfolioScreenShot} alt="TechImage" className="TechImages"/>
+              <img src={TechImageReact} alt="TechImage" className="TechImages"/>
+              <img src={TechImageJavascript} alt="TechImage" className="TechImages"/>
+              <img src={TechImageCSS} alt="TechImage" className="TechImages"/>
+              <img src={TechImageHtml5} alt="TechImage" className="TechImages"/>
             </div>
           </div>
           <div className="ListProjectImage">
