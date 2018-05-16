@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './ProjectList.css';
 import PortfolioScreenShot from '../../images/PortfolioScreenShot.png'
+
+import TechCSS from './technologies/TechCSS.js'
+
 import TechImageCSS from './technologies/css.svg'
 import TechImageGit from './technologies/git.svg'
 import TechImageHeroku from './technologies/heroku.svg'
@@ -45,6 +48,7 @@ class ProjectList extends Component {
             </p>
             <div className="ProjectTechnologies">
               {/* Insert Tech Classes Later */}
+              <TechCSS />
               <img src={TechImageReact} alt="TechImage" className="TechImages"/>
               <img src={TechImageJavascript} alt="TechImage" className="TechImages"/>
               <img src={TechImageCSS} alt="TechImage" className="TechImages"/>
