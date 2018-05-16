@@ -9,6 +9,33 @@
   display: flex;
   justify-content: space-around;
   vertical-align: middle;
+  flex-wrap: wrap;
   text-align: center;
   border: red solid 1px;
+}
+.ProjectList {
+}
+.ListProject{
+  display: flex;
+  justify-content: center;
+  vertical-align: middle;
+  flex-wrap: nowrap;
+  width: 100%;
+  border: blue solid 1px;
+}
+.ListProjectInformation{
+  flex-basic: 1;
+}
+.ListProjectImage{
+  flex-basic: 1;
+  padding-left: 50px;
+}
+.ProjectName{
+  font-size: 3em;
+}
+.ProjectGithub{
+  font-size: 1em;
+}
+.ProjectUrl{
+  font-size: 1em;
 }
