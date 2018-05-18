@@ -43,6 +43,8 @@ class Home extends Component {
 
         <div id="Home-wrapper"> {/* Flexboxed Body while maintaining the Navigation and Footer */}
 
+        {/* Add Technologies Components with Tooltip. */}
+
 
           <div id="Home-screen-container">
             <img src={MacImg} id="Home-screen-img" alt="Laptop" />

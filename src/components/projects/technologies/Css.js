@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import TechImageCSS from './css.svg'
+import TechImage from './css.svg'
 
 class TechCSS extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      blank: null
-    }
     this.handleHover = this.handleHover.bind(this)
   }
 
+  componentDidMount() {
+    document.getElementById('TechCSSBox').style.display = 'none';
+  }
 
   handleHover() {
     const e = document.getElementById('TechCSS');
@@ -25,9 +25,9 @@ class TechCSS extends Component {
     return (
       <div id="TechCSS" onMouseOver={this.handleHover}>
         <a href="https://www.w3schools.com/css/" alt="" >
-          <img src={TechImageCSS} alt="TechImage" className="TechImages"/>
+          <img src={TechImage} alt="TechImage" className="TechImages"/>
         </a>
-        <p id="TechCSSBox"> YO YO YO</p>
+        <p id="TechCSSBox" className="TechDescriptionBox"> CSS3</p>
       </div>
     );
   }

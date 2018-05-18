@@ -45,6 +45,14 @@
   padding-top: 10px;
   border: gold solid 1px;
 }
+.TechDescriptionBox{
+  background-color: white;
+  vertical-align: middle;
+  text-align: center;
+  position: absolute;
+  padding: 25px;
+  border-radius: 25px;
+}
 
 /* @MEDIA QUERIES */
 /* Custom, iPhone Retina */
@@ -75,8 +83,8 @@
     flex-basic: 1;
     padding-left: 1px;
     padding-right: 1px;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
   }
   .ListProjectImage{
     flex-basic: 1;
@@ -112,8 +120,8 @@
     flex-basic: 1;
     padding-left: 2px;
     padding-right: 2px;
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
   }
   .ListProjectImage{
     flex-basic: 1;
@@ -149,8 +157,8 @@
     flex-basic: 1;
     padding-left: 2px;
     padding-right: 2px;
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 45px;
   }
   .ListProjectImage{
     flex-basic: 1;
@@ -185,8 +193,8 @@
     flex-basic: 1;
     padding-left: 3px;
     padding-right: 3px;
-    width: 75px;
-    height: 75px;
+    width: 55px;
+    height: 55px;
   }
   .ListProjectImage{
     flex-basic: 1;
@@ -197,22 +205,22 @@
 @media only screen and (min-width : 1200px) {
   .ListProject{
     flex-wrap: nowrap;
-    height: 375px;
+    height: 400px;
   }
   .ListImages{
     height: 100%;
   }
   .ProjectName{
-    font-size: 3.5em;
+    font-size: 3.2em;
   }
   .ProjectGithub{
-    font-size: 1.7em;
+    font-size: 1.3em;
   }
   .ProjectUrl{
-    font-size: 1.7em;
+    font-size: 1.3em;
   }
   .ProjectDescription{
-    font-size: 1.5em;
+    font-size: 1.2em;
     margin-left: 5px;
     margin-right: 5px;
   }
@@ -220,8 +228,8 @@
     flex-basic: 1;
     padding-left: 10px;
     padding-right: 10px;
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
   }
   .ListProjectImage{
     flex-basic: 1;
