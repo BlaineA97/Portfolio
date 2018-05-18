@@ -33,8 +33,12 @@
   margin-top: auto;
   margin-bottom: auto;
   border: green solid 1px;
+  padding: 25px;
+  padding-right: 0;
 }
 .ListProjectImage{
+  padding: 25px;
+  padding-left: 0;
 }
 .ProjectTechnologies{
   display: flex;
