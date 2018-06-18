@@ -336,3 +336,65 @@ import MediaQuery from 'react-responsive';
   }
 }
 ~~~
+
+# Full list of Atom Packages as of 5-18-18
+ My Themes (Great highlighting, easy on the eyes):
+   UI: steam-pirate-ui
+     https://atom.io/themes/steam-pirate-ui
+   Syntax: steam-pirate-syntax
+     https://atom.io/themes/steam-pirate-syntax
+
+ Core MUST HAVES: 
+   atom-beautify
+     https://atom.io/packages/atom-beautify
+   auto-detect-indentation
+     https://atom.io/packages/auto-detect-indentation
+   auto-update-packages
+     https://atom.io/packages/auto-update-packages
+   autoclose-html
+     https://atom.io/packages/autoclose-html
+   busy-signal
+     https://atom.io/packages/busy-signal
+   emmet
+     https://atom.io/packages/emmet
+   file-icons
+     https://atom.io/packages/file-icons
+   highlight-selected
+     https://atom.io/packages/highlight-selected
+   jquery-snippets
+     https://atom.io/packages/jquery-snippets
+   neon-selection
+     https://atom.io/packages/neon-selection
+   pigments
+     https://atom.io/packages/pigments
+   teletype
+     https://atom.io/packages/teletype
+
+ Core Rails/Ruby Specific:
+   rails-snippets
+     https://atom.io/packages/rails-snippets
+   ruby-block
+     https://atom.io/packages/ruby-block
+
+ Core React/Javascript Specific:
+   language-babel
+     https://atom.io/packages/language-babel
+   linter
+     https://atom.io/packages/linter
+   react-es6-snippets
+     https://atom.io/packages/react-es6-snippets
+   react-snippets
+     https://atom.io/packages/react-snippets
+
+ Not Core But Highly Recommended:
+   atom-clock
+     https://atom.io/packages/atom-clock
+   color-picker
+     https://atom.io/packages/color-picker
+
+ Funs Side Ones:
+   activate-power-mode
+     https://atom.io/packages/activate-power-mode
+   rainbow-delimiters
+     https://atom.io/packages/rainbow-delimiters
+
